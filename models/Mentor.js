@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema({
+const MentorSchema = new Schema({
     username: {
       type: String,
       required:true,
@@ -16,22 +16,26 @@ const UserSchema = new Schema({
           message:"That email was not valid. Please enter a valid one"          
       }
     },
+    skillset:{
+        type:String,
+        required:true,
+    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
         ref: 'thoughts'
       }
     ],
-    mentors:[]
+    mentees:[]
   });
 
 // get total count of thoughts and replies on retrieval
-UserSchema.virtual('thoughtCount').get(function() {
+MentorSchema.virtual('thoughtCount').get(function() {
   return this.thoughts.length;
 });
 
   // create the User model using the PizzaSchema
-const User = model('User', UserSchema);
+const User = model('Mentor', MentorSchema);
 
 // export the User model
-module.exports = User;
+module.exports = Mentor;
