@@ -15,3 +15,12 @@ Your project should fulfill the following requirements:
 
 installations:
 npm install jsonwebtoken
+npm install --save-dev nodemon
+npm i @apollo/client graphql
+npm install react-router-dom
+
+
+Apollo Client (@apollo/client) is an all-in-one dependency that enables us to connect to a GraphQL API server and execute queries or mutations using their own special form of React Hooks.
+GraphQL (graphql) is a dependency much like MySQL2 was for Sequelize. We don't use it directly, but it needs to be present so that the GraphQL syntax used with Apollo Client can be understood.
+
+

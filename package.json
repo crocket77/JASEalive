@@ -1,5 +1,29 @@
 {
   "dependencies": {
-    "jsonwebtoken": "^8.5.1"
-  }
+    "jsonwebtoken": "^8.5.1",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "name": "jasealive",
+  "description": "CSS/REACT: Shyla\r GaphQL/Node.js/Express.js:\r MongoDB/Mongoose ODM:\r Queries/Mutations:",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seeds.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crocket77/JASEalive.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crocket77/JASEalive/issues"
+  },
+  "homepage": "https://github.com/crocket77/JASEalive#readme"
 }
