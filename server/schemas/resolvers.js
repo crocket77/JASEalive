@@ -1,5 +1,7 @@
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
+
 
 const resolvers = {
     Query: {
@@ -18,8 +20,8 @@ const resolvers = {
       users: async () => {
         return User.find()
           .select('-__v -password')
-          .populate('friends')
-          .populate('thoughts');
+          .populate('mentors')
+          .populate('interests');
       },
       },
       Mutation:{
