@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client';
 
+
+
 export const QUERY_THOUGHTS = gql`
   query thoughts($username: String) {
     thoughts(username: $username) {
@@ -63,25 +65,12 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-        reactions {
-          _id
-          createdAt
-          reactionBody
-          username
-        }
       }
-      friends {
+      mentors {
         _id
         username
       }
     }
-  }
 `;
 
 export const QUERY_ME_BASIC = gql`
@@ -90,8 +79,7 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      friendCount
-      friends {
+      mentors {
         _id
         username
       }
