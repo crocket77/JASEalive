@@ -4,10 +4,10 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Login from './pages/Login';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 // import NoMatch from './pages/NoMatch';
-// import Profile from './pages/Profile';
-// import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 
 const httpLink = createHttpLink({
@@ -30,6 +30,22 @@ function App() {
             <Route
                 path="/" 
                 element={<Home />} 
+            />
+            <Route 
+                path="/login" 
+                element={<Login />} 
+            />
+            <Route 
+                path="/signup" 
+                element={<Signup />} 
+            />
+            <Route 
+                path="/profile/:username" 
+                element={<Profile />} 
+            />
+            <Route 
+                path="/profile/:username" 
+                element={<Profile />} 
             />
           </Routes>
 

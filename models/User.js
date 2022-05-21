@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
     username: {
@@ -16,14 +17,34 @@ const UserSchema = new Schema({
           message:"That email was not valid. Please enter a valid one"          
       }
     },
-    thoughts: [
+    password: {
+      type: String,
+      required: true,
+      minlength: 5
+    },
+    mentors:[
       {
-        type: Schema.Types.ObjectId,
-        ref: 'thoughts'
+        type: Schema.Types.objectId,
+        ref:'Mentors'
       }
     ],
-    mentors:[]
+    interests:[]
   });
+
+  // set up pre-save middleware to create password
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+  return bcrypt.compare(password, this.password);
+};
 
 // get total count of thoughts and replies on retrieval
 UserSchema.virtual('thoughtCount').get(function() {
