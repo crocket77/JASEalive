@@ -18,6 +18,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    mentors: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Mentors'
+      }
+    ],
 
   // set this to use virtual below
   
