@@ -6,17 +6,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      friendCount
-      friends {
-        _id
-        username
-      }
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-        reactionCount
-      }
     }
   }
 `;
@@ -28,10 +17,7 @@ export const QUERY_ME = gql`
       username
       email
       }
-      mentors {
-        _id
-        username
-      }
+  
     }
 `;
 
