@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 // import 'bulma/css/bulma.min.css'
 
 import Auth from '../../utils/auth';
-const Header = () => {
 
+const Header = () => {
   const logout = event => {
     toggleBurgerMenu();
     event.preventDefault();
@@ -54,7 +54,6 @@ const Header = () => {
             </>
           )}
         </nav>
-
       </div>
     </header>
   );

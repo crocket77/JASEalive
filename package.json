@@ -1,13 +1,6 @@
 {
-  "dependencies": {
-    "bulma": "^0.9.4",
-    "concurrently": "^7.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^3.1.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  },
+  
+  
   "name": "jasealive",
   "description": "CSS/REACT: Shyla\r GaphQL/Node.js/Express.js:\r MongoDB/Mongoose ODM:\r Queries/Mutations:",
   "version": "1.0.0",
@@ -25,6 +18,9 @@
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  },
   "bugs": {
     "url": "https://github.com/crocket77/JASEalive/issues"
   },
