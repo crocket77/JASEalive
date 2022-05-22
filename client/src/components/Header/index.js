@@ -17,13 +17,14 @@ const Header = () => {
 
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-sm justify-center align-center">
-          <Link to="/">
-            <h1 className='title has-text-black-bis is-size-1 is-size-3-mobile flex-row has-text-left'>Life Sherpa</h1>
-          </Link>
-
-          <nav className="text-center">
+    <header className=" align-center is-fixed-top bg-secondary ">
+      <nav className="flex-row align-center is-justify-content-space-between has-shadow is-white">
+         <div className='navbar-brand '>
+            <Link to="/" className='navbar-item navbar-start'>
+              <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
+            </Link>
+          </div>
+          <div className="navbar text-center navbar-end">
           {Auth.loggedIn() ? (
             <>
             <div>
@@ -32,7 +33,7 @@ const Header = () => {
               <a href="/" onClick={logout}>
                 Logout
               </a> */}
-              <a role="button" className="navbar-burger burger has-text-black-bis has-text-right" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+              <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
               onClick={toggleBurgerMenu}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -53,8 +54,8 @@ const Header = () => {
               <Link to="/signup">Signup</Link>
             </>
           )}
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 };
