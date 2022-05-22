@@ -14,13 +14,13 @@ const Header = () => {
   function toggleBurgerMenu() {
     document.querySelector('.navbar-menu').classList.toggle('is-active');
   }
-
+ 
 
   return (
-    <header className=" align-center is-fixed-top bg-secondary ">
-      <nav className="flex-row align-center is-justify-content-space-between  is-white">
+    <header className=" bg-secondary mb-4">
+      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
          <div className='navbar-brand '>
-            <Link to="/" className='navbar-item navbar-start'>
+            <Link to="/" className='navbar-item navbar-start  is-fixed'>
               <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
             </Link>
           </div>
@@ -35,19 +35,21 @@ const Header = () => {
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
-              <div id="navbarBasic" className="navbar-menu bg-secondary">
-                <div className="navbar-item has-text-black-bis is-white ">
+              <div id="navbarBasic" className="navbar-menu bg-secondary is-fixed">
+                
                   <Link to="/" className="navbar-item " onClick={toggleBurgerMenu}>Home</Link>
                   <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
-                  <Link to="/" className="navbar-item bg-secondary" onClick={logout}>Logout</Link>
-                </div>
+                  <Link to="/" className="navbar-item" onClick={logout}>Logout</Link>
+
               </div>
             </div>
             </>
           ) : (
             <>
+            <div id="navbarBasic" className="navbar-menu bg-secondary">
               <Link to="/login">Login</Link>
               <Link to="/signup">Signup</Link>
+            </div>
             </>
           )}
         </div>
