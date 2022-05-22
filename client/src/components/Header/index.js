@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header className=" align-center is-fixed-top bg-secondary ">
-      <nav className="flex-row align-center is-justify-content-space-between has-shadow is-white">
+      <nav className="flex-row align-center is-justify-content-space-between  is-white">
          <div className='navbar-brand '>
             <Link to="/" className='navbar-item navbar-start'>
               <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
@@ -27,23 +27,19 @@ const Header = () => {
           <div className="navbar text-center navbar-end">
           {Auth.loggedIn() ? (
             <>
-            <div>
+            <div className='bg-secondary'>
       
-              {/* <Link to="/profile">Dashboard</Link>
-              <a href="/" onClick={logout}>
-                Logout
-              </a> */}
               <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
               onClick={toggleBurgerMenu}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
-              <div id="navbarBasic" className="navbar-menu">
-                <div className="navbar-start">
-                  <Link to="/" className="navbar-item" onClick={toggleBurgerMenu}>Home</Link>
+              <div id="navbarBasic" className="navbar-menu bg-secondary">
+                <div className="navbar-item has-text-black-bis is-white ">
+                  <Link to="/" className="navbar-item " onClick={toggleBurgerMenu}>Home</Link>
                   <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
-                  <Link to="/" className="navbar-item" onClick={logout}>Logout</Link>
+                  <Link to="/" className="navbar-item bg-secondary" onClick={logout}>Logout</Link>
                 </div>
               </div>
             </div>
