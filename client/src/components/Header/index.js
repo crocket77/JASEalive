@@ -13,29 +13,31 @@ const Header = () => {
   
   function toggleBurgerMenu() {
     document.querySelector('.navbar-menu').classList.toggle('is-active');
+    // document.querySelector('.navbar-menu').classList.toggle('is-flex');
   }
  
 
   return (
-    <header className=" bg-secondary mb-4">
-      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
-         <div className='navbar-brand '>
-            <Link to="/" className='navbar-item navbar-start  is-fixed'>
+    <header className=" bg-secondary mb-4 is-flex is-justify-content-space-between">         
+          <div className='navbar-brand '>
+            <Link to="/" className='navbar-item '>
               <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
             </Link>
           </div>
+      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
+
           <div className="navbar text-center navbar-end">
           {Auth.loggedIn() ? (
             <>
-            <div className='bg-secondary'>
+            <div className='bg-secondary has-dropdown'>
       
-              <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+              <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary  " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
               onClick={toggleBurgerMenu}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
-              <div id="navbarBasic" className="navbar-menu bg-secondary is-fixed">
+              <div id="navbarBasic" className="navbar-menu bg-secondary is-expanded">
                 
                   <Link to="/" className="navbar-item " onClick={toggleBurgerMenu}>Home</Link>
                   <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
