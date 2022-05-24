@@ -30,7 +30,7 @@ const WisdomForm = () => {
             console.log(e)
           }
       
-          // update thought array's cache
+          // update wisdom array's cache
           const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
           cache.writeQuery({
             query: QUERY_WISDOM,
@@ -43,7 +43,7 @@ const WisdomForm = () => {
         event.preventDefault();
       
         try {
-          // add thought to database
+          // add wisdom to database
           await addWisdom({
             variables: { wisdomText }
           });
@@ -67,7 +67,7 @@ const WisdomForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-        placeholder="Here's a new thought..."
+        placeholder="This is the wisdom I would like to give..."
         value={wisdomText}
         className="form-input col-12 col-md-9"
         onChange={handleChange}
