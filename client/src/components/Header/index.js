@@ -18,14 +18,13 @@ const Header = () => {
  
 
   return (
-    <header className=" bg-secondary mb-4 is-flex is-justify-content-space-between">         
-          <div className='navbar-brand '>
+    <header className=" bg-secondary mb-4">
+      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
+         <div className='navbar-brand '>
             <Link to="/" className='navbar-item '>
               <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
             </Link>
           </div>
-      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
-
           <div className="navbar text-center navbar-end">
           {Auth.loggedIn() ? (
             <>
