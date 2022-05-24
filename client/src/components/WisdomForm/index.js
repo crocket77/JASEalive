@@ -3,9 +3,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_ABOUT } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
-const AboutForm = () => {
+const ThoughtForm = () => {
     
-    const [aboutText, setText] = useState('');
+    const [thoughtText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
         if (event.target.value.length <= 280) {
@@ -14,8 +14,8 @@ const AboutForm = () => {
         }
       };
       
-      const [addAbout, { error }] = useMutation(ADD_ABOUT, {
-        update(cache, { data: { addAbout } }) {
+      const [addThought, { error }] = useMutation(ADD_THOUGHT, {
+        update(cache, { data: { addThought } }) {
       
             // could potentially not exist yet, so wrap in a try/catch
           try {
@@ -23,16 +23,16 @@ const AboutForm = () => {
             const { me } = cache.readQuery({ query: QUERY_ME });
             cache.writeQuery({
               query: QUERY_ME,
-              data: { me: { ...me, about: [...me.about, addAbout] } },
+              data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
             });
           } catch (e) {
-            console.log(e)
+            console.warn("First thought insertion by user!")
           }
       
           // update thought array's cache
-          const { about } = cache.readQuery({ query: QUERY_ABOUT });
+          const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
           cache.writeQuery({
-            query: QUERY_ABOUT,
+            query: QUERY_THOUGHTS,
             data: { thoughts: [addThought, ...thoughts] },
           });
         }
