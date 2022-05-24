@@ -29,7 +29,12 @@ const userSchema = new Schema({
     //     ref:'Mentors'
     //   }
     // ],
-    // interests:[]
+    // interests:[
+    //      //   {
+    //     type: Schema.Types.objectId,
+    //     ref:'Interests'
+    //   }
+    //]
   });
 
   // set up pre-save middleware to create password

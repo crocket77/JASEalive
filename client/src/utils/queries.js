@@ -1,11 +1,45 @@
 import { gql } from '@apollo/client';
 
+
+export const QUERY_WISDOMS = gql`
+  query wisdoms($username: String) {
+    wisdoms(username: $username) {
+      _id
+      wisdomText
+      createdAt
+      username
+    }
+  }
+`;
+
+export const QUERY_WISDOM = gql`
+  query wisdom($id: ID!) {
+    wisdom(_id: $id) {
+      _id
+      wisdomText
+      createdAt
+      username
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
       _id
       username
       email
+      about
+      menteeCount
+      mentees{
+        _id
+        username
+      }
+      wisdom{
+        _id
+        wisdomText
+        createdAt
+      }
     }
   }
 `;
@@ -16,8 +50,33 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      about
+      menteeCount
+      wisdom{
+        _id
+        wisdomText
+        createdAt
       }
-  
+      mentees{
+        _id
+        username
+      }
     }
+  }
 `;
 
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      about
+      menteeCount
+      mentees {
+        _id
+        username
+      }
+    }
+  }
+`;
