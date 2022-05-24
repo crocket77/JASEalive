@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ABOUT } from '../../utils/mutations';
-import { QUERY_ME } from '../../utils/queries';
+import { QUERY_ME,QUERY_ABOUT } from '../../utils/queries';
 
 const AboutForm = () => {
     
