@@ -24,5 +24,41 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_ABOUT = gql`
+  mutation addAbout($aboutText: String!) {
+    addAbout(aboutText: $aboutText) {
+      _id
+      aboutText
+      createdAt
+      username
+    }
+  }
+`;
+
+export const ADD_WISDOM = gql`
+  mutation addWisdom($wisdomText: String!) {
+    addWisdom(wisdomText: $wisdomText) {
+      _id
+      wisdomText
+      createdAt
+      username
+    }
+  }
+`;
+
+export const ADD_MENTEE = gql`
+  mutation addMentee($id: ID!) {
+    addMentee(menteeId: $id) {
+      _id
+      username
+      menteeCount
+      mentees {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 
 
