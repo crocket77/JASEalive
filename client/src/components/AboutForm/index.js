@@ -8,7 +8,7 @@ const AboutForm = () => {
     const [aboutText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
-        if (event.target.value.length <= 280) {
+        if (event.target.value.length <= 1000) {
           setText(event.target.value);
           setCharacterCount(event.target.value.length);
         }
@@ -29,11 +29,11 @@ const AboutForm = () => {
             console.log(e)
           }
       
-          // update thought array's cache
+          // update about cache
           const { about } = cache.readQuery({ query: QUERY_ABOUT });
           cache.writeQuery({
             query: QUERY_ABOUT,
-            data: { thoughts: [addThought, ...thoughts] },
+            data: { about: [addAbout, ...about] },
           });
         }
       });
@@ -42,9 +42,9 @@ const AboutForm = () => {
         event.preventDefault();
       
         try {
-          // add thought to database
-          await addThought({
-            variables: { thoughtText }
+          // add about to database
+          await addAbout({
+            variables: { aboutText }
           });
       
           // clear form value
@@ -57,8 +57,8 @@ const AboutForm = () => {
   return (
 
     <div>
-        <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
+        <p className={`m-0 ${characterCount === 1000 || error ? 'text-error' : ''}`}>
+        Character Count: {characterCount}/1000
         {error && <span className="ml-2">Something went wrong...</span>}
         </p>
       <form
@@ -66,8 +66,8 @@ const AboutForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-        placeholder="Here's a new thought..."
-        value={thoughtText}
+        placeholder="Tell us about yourself and what you know..."
+        value={aboutText}
         className="form-input col-12 col-md-9"
         onChange={handleChange}
         ></textarea>
@@ -79,4 +79,4 @@ const AboutForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default AboutForm;
