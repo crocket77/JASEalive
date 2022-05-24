@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_ABOUT = gql`
+  query about($username: String) {
+    about(username: $username) {
+      _id
+      aboutText
+      createdAt
+      username
+    }
+  }
+`;
 
 export const QUERY_WISDOMS = gql`
   query wisdoms($username: String) {
@@ -11,6 +21,8 @@ export const QUERY_WISDOMS = gql`
     }
   }
 `;
+
+
 
 export const QUERY_WISDOM = gql`
   query wisdom($id: ID!) {
