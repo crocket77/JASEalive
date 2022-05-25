@@ -41,6 +41,7 @@ const Header = () => {
                 
                   <Link to="/" className="navbar-item " onClick={toggleBurgerMenu}>Home</Link>
                   <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
+                  <Link to="/board" className="navbar-item" onClick={toggleBurgerMenu}>Board</Link>
                   <Link to="/" className="navbar-item" onClick={logout}>Logout</Link>
 
               </div>
