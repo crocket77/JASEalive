@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
+import { Dropdown } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
@@ -13,9 +14,9 @@ const Board = (props) => {
   });
   const user = data?.me || data?.user || {};
 
-  const [value, setValue] = React.useState('coding');
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const [topic, setTopic] = React.useState('coding');
+  const handleTopicChange = (event) => {
+    setTopic(event.target.value);
   }
 
   // navigate to personal profile page if username is yours
@@ -45,7 +46,19 @@ const Board = (props) => {
             Here you can find Mentor videos surrounding a plethora of topics! 
           </p>
           <div>
-            <label>
+            <Dropdown
+              label = "Available Mentor Topics"
+              options = {[
+                { label: 'Coding', value: 'coding' },
+                { label: 'Fitness', value: 'fitness' },
+                { label: 'Music', value: 'music' },
+                { label: 'Nutrition', value: 'nutrition' },
+                { label: 'Gaming', value: 'gaming' }
+              ]}
+              value = { topic }
+              onChange = { handleTopicChange }
+            />
+            {/* <label>
               Mentor Video Topics
               <select value={value} onChange={handleChange}>
                 <option value="coding">Coding</option>
@@ -54,7 +67,7 @@ const Board = (props) => {
                 <option value="nutrition">Nutrition</option>
                 <option value="gaming">Gaming</option>
               </select>
-            </label>
+            </label> */}
           </div>
           <p className='w-100'>
             Recently Added Videos:
