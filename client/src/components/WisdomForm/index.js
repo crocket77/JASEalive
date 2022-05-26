@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_ABOUT } from '../../utils/mutations';
-import { QUERY_ME } from '../../utils/queries';
+import { ADD_WISDOM } from '../../utils/mutations';
+import { QUERY_ME, QUERY_WISDOM } from '../../utils/queries';
 
-const ThoughtForm = () => {
+
+const WisdomForm = () => {
     
-    const [thoughtText, setText] = useState('');
+    const [wisdomText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
-        if (event.target.value.length <= 280) {
+        if (event.target.value.length <= 500) {
           setText(event.target.value);
           setCharacterCount(event.target.value.length);
         }
       };
       
-      const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-        update(cache, { data: { addThought } }) {
+      const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
+        update(cache, { data: { addWisdom } }) {
       
             // could potentially not exist yet, so wrap in a try/catch
           try {
@@ -23,17 +24,17 @@ const ThoughtForm = () => {
             const { me } = cache.readQuery({ query: QUERY_ME });
             cache.writeQuery({
               query: QUERY_ME,
-              data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+              data: { me: { ...me, wisdom: [...me.wisdom, addWisdom] } },
             });
           } catch (e) {
-            console.warn("First thought insertion by user!")
+            console.log(e)
           }
       
-          // update thought array's cache
-          const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+          // update wisdom array's cache
+          const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
           cache.writeQuery({
-            query: QUERY_THOUGHTS,
-            data: { thoughts: [addThought, ...thoughts] },
+            query: QUERY_WISDOM,
+            data: { wisdom: [addWisdom, ...wisdom] },
           });
         }
       });
@@ -42,9 +43,9 @@ const ThoughtForm = () => {
         event.preventDefault();
       
         try {
-          // add thought to database
-          await addThought({
-            variables: { thoughtText }
+          // add wisdom to database
+          await addWisdom({
+            variables: { wisdomText }
           });
       
           // clear form value
@@ -66,8 +67,8 @@ const ThoughtForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-        placeholder="Here's a new thought..."
-        value={thoughtText}
+        placeholder="This is the wisdom I would like to give..."
+        value={wisdomText}
         className="form-input col-12 col-md-9"
         onChange={handleChange}
         ></textarea>
@@ -79,4 +80,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default WisdomForm;

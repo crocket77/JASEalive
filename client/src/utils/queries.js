@@ -83,12 +83,7 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      about
-      menteeCount
-      mentees {
-        _id
-        username
-      }
+
     }
   }
 `;
