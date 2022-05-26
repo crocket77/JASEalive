@@ -7,19 +7,20 @@ import Auth from '../utils/auth';
 
 const Profile = (props) => {
 
-  const { username: userParam } = useParams();
+  const { username } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
+    variables: { username: username },
   });
-  
+  console.log(username);
 
   const user = data?.me || data?.user || {};
-  console.log(user)
+  
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile/:username" />;
-  }
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
+    return <Navigate to="/profile" />;
+  } 
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -39,7 +40,7 @@ const Profile = (props) => {
     <h1>your profile</h1>
       <div className="flex-row mb-3">
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+          Viewing {username ? `${user.username}'s` : 'your'} profile.
         </h2>
 
        </div>
