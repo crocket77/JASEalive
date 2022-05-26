@@ -28,11 +28,17 @@ const resolvers = {
       },
       Mutation:{
         addUser: async(parent, args) => {
+          // make args lowercase
           const user = await User.create(args);
           const token = signToken(user);
 
           return { token, user };
         },
+        addAbout: async (parent, args) => {
+          console.log(args)
+          return User.findOneAndUpdate({"_id": args._id},{"$set": {about:args.about}}, {new:true})
+        },
+
         login:async(parent, { email, password }) => {
           const user = await User.findOne({ email });
   
