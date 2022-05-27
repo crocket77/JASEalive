@@ -8,7 +8,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    about: String
+    aboutText: String
   }
   type Auth {
     token:ID!
@@ -22,7 +22,7 @@ const typeDefs = gql`
   type Mutation {
     login(email:String!, password: String!): Auth
     addUser(username:String!, email: String!, password:String!): Auth
-    addAbout(email:String!, aboutText:String!):User
+    addAbout(_id:ID!, aboutText:String!):User
   }
 `;
 

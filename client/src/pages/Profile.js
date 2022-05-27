@@ -46,7 +46,7 @@ const Profile = (props) => {
         </h2>
         {loggedIn && (
           <div className="col-12 mb-3">
-            <AboutForm />
+            <AboutForm _id={user._id}/>
           </div>
         )}
        </div>
