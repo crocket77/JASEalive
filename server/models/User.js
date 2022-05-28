@@ -23,13 +23,24 @@ const userSchema = new Schema({
       required: true,
       minlength: 5
     },
+    isMentor: {
+      type: Boolean
+    },
+    aboutText: {
+      type: String,
+    }
     // mentors:[
     //   {
     //     type: Schema.Types.objectId,
     //     ref:'Mentors'
     //   }
     // ],
-    // interests:[]
+    // interests:[
+    //      //   {
+    //     type: Schema.Types.objectId,
+    //     ref:'Interests'
+    //   }
+    //]
   });
 
   // set up pre-save middleware to create password

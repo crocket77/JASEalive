@@ -1,12 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { 
-  ApolloProvider, 
-  ApolloClient, 
-  InMemoryCache, 
-  createHttpLink, 
-} from '@apollo/client';
-
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink, } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
@@ -17,10 +11,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
+import Board from './pages/Board';
 
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -61,6 +56,14 @@ function App() {
             <Route 
                 path="/profile/" 
                 element={<Profile />} 
+            />
+            <Route 
+                path="/profile/:username" 
+                element={<Profile />} 
+            />
+            <Route 
+                path="/board/" 
+                element={<Board />} 
             />
             <Route 
                 path="*" 
