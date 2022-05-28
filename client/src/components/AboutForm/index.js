@@ -5,6 +5,7 @@ import { QUERY_ME,QUERY_ABOUT } from '../../utils/queries';
 
 const AboutForm = ({_id}) => {
     
+  
     const [aboutText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
