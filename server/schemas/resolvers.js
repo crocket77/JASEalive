@@ -5,26 +5,35 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-      me: async (parent, args, context) => {
-        if (context.user) {
-          const userData = await User.findOne(context.user)
-          .select('-__v -password');
-    
-        return userData;
-        }
-        throw new AuthenticationError('Not logged in')
-      },
-      user: async (parent, { username }) => {
-        return User.findOne({ username })
-          .select('-__v -password');
-      },
-      // get all users
-      users: async () => {
-        return User.find()
-          .select('-__v -password')
-          // .populate('mentors')
-          // .populate('interests');
-      },
+        me: async (parent, args, context) => {
+          if (context.user) {
+            const userData = await User.findOne(context.user)
+            .select('-__v -password');
+      
+          return userData;
+          }
+          throw new AuthenticationError('Not logged in')
+        },
+        user: async (parent, { username }) => {
+          return User.findOne({ username })
+            .select('-__v -password');
+        },
+        // get all users
+        users: async () => {
+          return User.find()
+            .select('-__v -password')
+            // .populate('mentors')
+            // .populate('interests');
+        },
+        mentors: async (parent, args, context) => {
+          console.log(context);
+          if (context) {
+            const mentorData = await User.find()
+              .select('-__v -password')
+              .populate('isMentor');
+            return mentorData;
+          }
+        },
       },
       Mutation:{
         addUser: async(parent, args) => {

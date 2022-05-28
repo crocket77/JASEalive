@@ -12,6 +12,7 @@
   --spacing-three: 1rem;
   --spacing-four: calc(1rem * 1.5);
   --spacing-five: calc(1rem * 3);
+  --text-background:  rgba(213, 216, 252, 0.5);
 }
 
 * {
@@ -32,6 +33,11 @@ body {
   font-size: 20px;
   color: var(--dark);
   background-color: #f3fffee1;
+  background-image: url("https://i.ytimg.com/vi/JsM910nw_k8/maxresdefault.jpg");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 
 h1,
@@ -99,6 +105,23 @@ nav a:hover {
   color: var(--secondary);
   background-color: var(--dark);
 }
+
+#box1 {
+  background: var(--text-background);
+  border-radius: 20px 20px 20px 20px;
+  color: #040404;
+  font-weight: bolder;
+}
+
+#disclaimer {
+  margin-top: 20px;
+  bottom: 0;
+  vertical-align : bottom;
+  background: var(--text-background);
+  border-radius: 20px 20px 20px 20px;
+  
+}
+
 
 .page-title {
   text-align: center;

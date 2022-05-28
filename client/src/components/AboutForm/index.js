@@ -23,19 +23,20 @@ const AboutForm = ({_id}) => {
             // update me array's cache
             const { me } = cache.readQuery({ query: QUERY_ME });
             console.log(me)
-            cache.writeQuery({
-              query: QUERY_ME,
-              data: { me: { ...me, aboutText: [...me.aboutText, addAbout] } },
-            });
+            // cache.writeQuery({
+            //   query: QUERY_ME,
+            //   data: { me: { ...me, aboutText: [...me.aboutText, addAbout] } },
+            // });
           } catch (e) {
             console.log(e)
           }
       
           // update about cache
-          const { aboutText } = cache.readQuery({ query: QUERY_ABOUT });
+          const { me } = cache.readQuery({ query: QUERY_ME});
+          console.log(me)
           cache.writeQuery({
-            query: QUERY_ABOUT,
-            data: { aboutText: [addAbout, ...aboutText] },
+            query: QUERY_ME,
+            data: { aboutText: [addAbout, aboutText] },
           });
         }
       });

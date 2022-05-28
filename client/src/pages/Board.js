@@ -1,23 +1,26 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-
+import React, { useState, Container, List, Card } from 'react';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';
+// import Auth from '../utils/auth';
 
-const  Board= (props) => {
+const Board = (props) => {
+  const { username: userParam } = useParams();
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
+  const user = data?.me || data?.user || {};
 
-  // const { username: userParam } = useParams();
+  const [topic, setTopic] = useState('all');
+  const handleTopicChange = (event) => {
+    setTopic(event.target.value);
+  }
 
-  // const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-  //   variables: { username: userParam },
-  // });
-
-  // const user = data?.me || data?.user || {};
+  const { mentors } = useQuery(QUERY_MENTOR)
 
   // navigate to personal profile page if username is yours
   // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-  //   return <Navigate to="/profile:username" />;
+  //   return <Navigate to="/board" />;
   // }
 
   // if (loading) {
@@ -34,28 +37,94 @@ const  Board= (props) => {
   // }
   
   return (
-    <div>
-    <h1>Mentor Board</h1>
-
-
-      <div className="flex-row justify-space-between mb-3">
-        <div className="col-12 mb-3 col-lg-8">
-          {/* <ThoughtList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
-          /> */}
+    <>
+      <main>
+        <h1>Mentor Board</h1>
+        <div className='flex-row justify-space-between'>
+          <div className='about col-12 mb-3 ml-3'>
+            <p className='w-100'>
+              Here you can find Mentor videos surrounding a plethora of topics! 
+            </p>
+            <div className="dropdown is-hoverable">
+              <div className="dropdown-trigger">
+                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+                  <span>Topics!</span>
+                  <span className="icon is-small">
+                    <i className="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div className="dropdown-menu" id="dropdown-menu2" role="menu">
+                <div className="dropdown-content">
+                  <div className="dropdown-item">
+                    <p>Coding</p>
+                  </div>
+                  <div className="dropdown-item">
+                    <p>Fitness</p>
+                  </div>
+                  <div className="dropdown-item">
+                    <p>Music</p>
+                  </div>
+                  <div className="dropdown-item">
+                    <p>Nutrition</p>
+                  </div>
+                  <div className="dropdown-item">
+                    <p>Gaming</p>
+                  </div>
+                  <hr className="dropdown-divider"></hr>
+                  <div className="dropdown-item">
+                    <p>All</p>
+                  </div>
+                </div>
+              </div>
+              {/* <Dropdown
+                label = "Available Mentor Topics"
+                options = {[
+                  { label: 'All', value: 'all' },
+                  { label: 'Coding', value: 'coding' },
+                  { label: 'Fitness', value: 'fitness' },
+                  { label: 'Music', value: 'music' },
+                  { label: 'Nutrition', value: 'nutrition' },
+                  { label: 'Gaming', value: 'gaming' }
+                ]}
+                value = { topic }
+                onChange = { handleTopicChange }
+              /> */}
+              {/* <label>
+                {label}
+                <select value={value} onChange={onChange}>
+                  {options.map((option) => (
+                    <option value={option.value}>{option.label}</option>
+                  ))}
+                </select>
+              </label> */}
+              {/* <label>
+                Mentor Video Topics
+                <select value={value} onChange={handleChange}>
+                  <option value="coding">Coding</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="music">Music</option>
+                  <option value="nutrition">Nutrition</option>
+                  <option value="gaming">Gaming</option>
+                </select>
+              </label> */}
+            </div>
+            <p className='w-100'>
+              Recently Added Videos:
+            </p>
+          </div>
         </div>
+        <container>
+        <h1>List Of Mentors</h1>
+        <list>
+          {[mentors].map((mentors) => (
+            <card>{mentors}</card>
+          ))}
+        </list>
+      </container>
+      </main>
 
-        <div className="col-12 col-lg-3 mb-3">
-          {/* <FriendList
-            username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
-          /> */}
-        </div>
-      </div>
-      {/* <div className="mb-3">{!userParam && <ThoughtForm />}</div> */}
-    </div>
+    </>
   );
 };
 
