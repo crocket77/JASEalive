@@ -45,34 +45,34 @@ const Board = (props) => {
             <p className='w-100'>
               Here you can find Mentor videos surrounding a plethora of topics! 
             </p>
-            <div class="dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+            <div className="dropdown is-hoverable">
+              <div className="dropdown-trigger">
+                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu2">
                   <span>Topics!</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  <span className="icon is-small">
+                    <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
                 </button>
               </div>
-              <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                <div class="dropdown-content">
-                  <div class="dropdown-item">
+              <div className="dropdown-menu" id="dropdown-menu2" role="menu">
+                <div className="dropdown-content">
+                  <div className="dropdown-item">
                     <p>Coding</p>
                   </div>
-                  <div class="dropdown-item">
+                  <div className="dropdown-item">
                     <p>Fitness</p>
                   </div>
-                  <div class="dropdown-item">
+                  <div className="dropdown-item">
                     <p>Music</p>
                   </div>
-                  <div class="dropdown-item">
+                  <div className="dropdown-item">
                     <p>Nutrition</p>
                   </div>
-                  <div class="dropdown-item">
+                  <div className="dropdown-item">
                     <p>Gaming</p>
                   </div>
-                  <hr class="dropdown-divider"></hr>
-                  <div class="dropdown-item">
+                  <hr className="dropdown-divider"></hr>
+                  <div className="dropdown-item">
                     <p>All</p>
                   </div>
                 </div>
