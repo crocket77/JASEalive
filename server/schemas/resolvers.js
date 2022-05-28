@@ -29,11 +29,26 @@ const resolvers = {
           console.log(context);
           if (context.user.role === "Mentor") {
             const mentorData = await User.find()
-              .select('-__v -password')
-              .populate('isMentor');
+              .select('-__v -password');
+              // .populate('isMentor');
             return mentorData;
           }
         },
+        categories: async () => {
+          return Categories.find().select('-__v');
+        },
+        wisdomSingle: async (parent, { _id }) => {
+          console.log({ _id });
+          return Wisdom.findOne({ _id })
+          .select('-__v');
+        },
+        wisdomMentor: async (parent, { username }) => {
+          const mentorWisdoms = await Wisdom.find({ username })
+          .select('-__v'); 
+        },
+        wisdomAll: async () => {
+          return Wisdom.find().select('-__v');
+        }
       },
       Mutation:{
         addUser: async(parent, args) => {
@@ -47,7 +62,11 @@ const resolvers = {
           console.log(args)
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
-
+        addWisdom: async(parent, args, context) => {
+          // add username as context.user...
+          const newWisdom = await Wisdom.create(args);
+          return newWisdom;
+        },
         login:async(parent, { email, password }) => {
           const user = await User.findOne({ email });
   
