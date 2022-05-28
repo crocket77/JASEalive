@@ -107,14 +107,14 @@ nav a:hover {
 
 #box1 {
   
-background: rgba(213, 216, 252, 0.4);
+  background: rgba(213, 216, 252, 0.4);
   border-radius: 20px 20px 20px 20px;
   color: #040404;
   font-weight: bolder;
 }
 
 #disclaimer {
-  
+  margin-top: 20px;
   bottom: 0;
   vertical-align : bottom;
   background: rgba(213, 216, 252, 0.4);
