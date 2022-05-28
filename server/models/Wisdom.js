@@ -3,11 +3,11 @@ const { Schema, model } = require('mongoose');
 const wisdomSchema = new Schema({
   wisdomText: {
     type: String,
-    required: 'You need to leave a thought!'
+    required: 'You need to leave a wisdom!'
   },
   youTubeLink: {
     type: String
-  }
+  },
   createdAt: {
     type: Date,
     default: Date.now

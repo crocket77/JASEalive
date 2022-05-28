@@ -27,7 +27,7 @@ const resolvers = {
         },
         mentors: async (parent, args, context) => {
           console.log(context);
-          if (context) {
+          if (context.user.role === "Mentor") {
             const mentorData = await User.find()
               .select('-__v -password')
               .populate('isMentor');
