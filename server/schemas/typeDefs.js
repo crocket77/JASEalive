@@ -8,6 +8,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    isMentor: Boolean
     aboutText: String
   }
   type Auth {
@@ -18,6 +19,7 @@ const typeDefs = gql`
     me: User
     user(username: String!): User
     users: [User]
+    mentors: [User]
   }
   type Mutation {
     login(email:String!, password: String!): Auth
