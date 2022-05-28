@@ -87,3 +87,13 @@ export const QUERY_ME_BASIC = gql`
     }
   }
 `;
+
+export const QUERY_MENTOR = gql`
+  {
+    mentor {
+      _id
+      username
+      about
+    }
+  }
+`;
