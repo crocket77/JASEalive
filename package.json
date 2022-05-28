@@ -2,27 +2,107 @@
   
   
   "name": "jasealive",
+  
+  
   "description": "CSS/REACT: Shyla\r GaphQL/Node.js/Express.js:\r MongoDB/Mongoose ODM:\r Queries/Mutations:",
+  
+  
   "version": "1.0.0",
+  
+  
   "main": "server/server.js",
+  
+  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed"
+  
+  
+    
+  
+  "test": "echo \"Error: no test specified\" && exit 1",
+  
+  
+    
+  
+  "start": "node server/server.js",
+  
+  
+    
+  
+  "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+  
+  
+    
+  
+  "install": "cd server && npm i && cd ../client && npm i",
+  
+  
+    
+  
+  "seed": "cd server && npm run seed"
+  
+  
   },
+  
+  
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/crocket77/JASEalive.git"
+  
+  
+    
+  
+  "type": "git",
+  
+  
+    
+  
+  "url": "git+https://github.com/crocket77/JASEalive.git"
+  
+  
   },
+  
+  
   "author": "",
+  
+  
   "license": "ISC",
+  
+  
   "devDependencies": {
-    "concurrently": "^7.1.0"
+  
+  
+    
+  
+  "concurrently": "^7.1.0"
+  
+  
   },
+  
+  
   "bugs": {
-    "url": "https://github.com/crocket77/JASEalive/issues"
+  
+  
+    
+  
+  "url": "https://github.com/crocket77/JASEalive/issues"
+  
+  
   },
-  "homepage": "https://github.com/crocket77/JASEalive#readme"
+  
+  
+  "homepage": "https://github.com/crocket77/JASEalive#readme",
+  
+  
+  "dependencies": {
+  
+  
+    
+  
+  "bulma": "^0.9.4",
+  
+  
+    
+  
+  "init": "^0.1.2"
+  
+  
+  }
 }
