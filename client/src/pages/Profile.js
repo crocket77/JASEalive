@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
@@ -10,6 +10,10 @@ const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
 
   const { username } = useParams();
+
+  useEffect(() => {
+    console.log(`/profile/${ username }`);
+  });
 
   const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
     variables: { username: username },
