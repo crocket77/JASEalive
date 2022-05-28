@@ -25,6 +25,9 @@ const userSchema = new Schema({
     },
     isMentor: {
       type: Boolean
+    },
+    aboutText: {
+      type: String,
     }
     // mentors:[
     //   {

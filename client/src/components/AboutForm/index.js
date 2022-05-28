@@ -3,8 +3,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_ABOUT } from '../../utils/mutations';
 import { QUERY_ME,QUERY_ABOUT } from '../../utils/queries';
 
-const AboutForm = () => {
+const AboutForm = ({_id}) => {
     
+  
     const [aboutText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const handleChange = event => {
@@ -21,32 +22,34 @@ const AboutForm = () => {
           try {
             // update me array's cache
             const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-              query: QUERY_ME,
-              data: { me: { ...me, about: [...me.about, addAbout] } },
-            });
+            console.log(me)
+            // cache.writeQuery({
+            //   query: QUERY_ME,
+            //   data: { me: { ...me, aboutText: [...me.aboutText, addAbout] } },
+            // });
           } catch (e) {
             console.log(e)
           }
       
           // update about cache
-          const { about } = cache.readQuery({ query: QUERY_ABOUT });
+          const { me } = cache.readQuery({ query: QUERY_ME});
+          console.log(me)
           cache.writeQuery({
-            query: QUERY_ABOUT,
-            data: { about: [addAbout, ...about] },
+            query: QUERY_ME,
+            data: { aboutText: [addAbout, aboutText] },
           });
         }
       });
       
       const handleFormSubmit = async event => {
         event.preventDefault();
-      
         try {
+          console.log(_id)
           // add about to database
           await addAbout({
-            variables: { aboutText }
+            variables: { _id, aboutText }
           });
-      
+          console.log("anything")
           // clear form value
           setText('');
           setCharacterCount(0);

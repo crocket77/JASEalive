@@ -115,12 +115,12 @@ const Board = (props) => {
           </div>
         </div>
       </main>
-      <Container>
+      {/* <Container>
         <h1>List Of Mentors</h1>
         <List>
           {}
         </List>
-      </Container>
+      </Container> */}
     </>
   );
 };
