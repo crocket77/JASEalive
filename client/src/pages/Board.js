@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { Dropdown } from 'react-router-dom';
+
 import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 
 const Board = (props) => {
   const { username: userParam } = useParams();
@@ -14,28 +14,28 @@ const Board = (props) => {
   });
   const user = data?.me || data?.user || {};
 
-  const [topic, setTopic] = React.useState('coding');
+  const [topic, setTopic] = useState('all');
   const handleTopicChange = (event) => {
     setTopic(event.target.value);
   }
 
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/board" />;
-  }
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/board" />;
+  // }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
-    );
-  }
+  // if (!user?.username) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see this. Use the navigation links above to
+  //       sign up or log in!
+  //     </h4>
+  //   );
+  // }
   
   return (
     <main>
@@ -45,10 +45,41 @@ const Board = (props) => {
           <p className='w-100'>
             Here you can find Mentor videos surrounding a plethora of topics! 
           </p>
-          <div>
-            <Dropdown
+          <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <span>Topics!</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+              <div class="dropdown-content">
+                <div class="dropdown-item">
+                  <p>All</p>
+                </div>
+                <div class="dropdown-item">
+                  <p>Coding</p>
+                </div>
+                <div class="dropdown-item">
+                  <p>Fitness</p>
+                </div>
+                <div class="dropdown-item">
+                  <p>Music</p>
+                </div>
+                <div class="dropdown-item">
+                  <p>Nutrition</p>
+                </div>
+                <div class="dropdown-item">
+                  <p>Gaming</p>
+                </div>
+              </div>
+            </div>
+            {/* <Dropdown
               label = "Available Mentor Topics"
               options = {[
+                { label: 'All', value: 'all' },
                 { label: 'Coding', value: 'coding' },
                 { label: 'Fitness', value: 'fitness' },
                 { label: 'Music', value: 'music' },
@@ -57,7 +88,15 @@ const Board = (props) => {
               ]}
               value = { topic }
               onChange = { handleTopicChange }
-            />
+            /> */}
+            {/* <label>
+              {label}
+              <select value={value} onChange={onChange}>
+                {options.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </label> */}
             {/* <label>
               Mentor Video Topics
               <select value={value} onChange={handleChange}>
