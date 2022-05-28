@@ -41,17 +41,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      about
-      menteeCount
-      mentees{
-        _id
-        username
-      }
-      wisdom{
-        _id
-        wisdomText
-        createdAt
-      }
+      aboutText
     }
   }
 `;
@@ -62,17 +52,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      about
-      menteeCount
-      wisdom{
-        _id
-        wisdomText
-        createdAt
-      }
-      mentees{
-        _id
-        username
-      }
+      aboutText
     }
   }
 `;

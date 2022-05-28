@@ -23,6 +23,9 @@ const userSchema = new Schema({
       required: true,
       minlength: 5
     },
+    aboutText:{
+      type:String,
+    }
     // mentors:[
     //   {
     //     type: Schema.Types.objectId,

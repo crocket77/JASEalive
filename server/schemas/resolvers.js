@@ -7,12 +7,16 @@ const resolvers = {
     Query: {
       me: async (parent, args, context) => {
         if (context.user) {
-        const userData = await User.findOne({})
+          const userData = await User.findOne(context.user)
           .select('-__v -password');
     
         return userData;
         }
         throw new AuthenticationError('Not logged in')
+      },
+      user: async (parent, { username }) => {
+        return User.findOne({ username })
+          .select('-__v -password');
       },
       // get all users
       users: async () => {
@@ -24,11 +28,17 @@ const resolvers = {
       },
       Mutation:{
         addUser: async(parent, args) => {
+          // make args lowercase
           const user = await User.create(args);
           const token = signToken(user);
 
           return { token, user };
         },
+        addAbout: async (parent, args) => {
+          console.log(args)
+          return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
+        },
+
         login:async(parent, { email, password }) => {
           const user = await User.findOne({ email });
   
