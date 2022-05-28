@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Container, List, Card } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';
@@ -115,12 +115,14 @@ const Board = (props) => {
           </div>
         </div>
       </main>
-      {/* <Container>
+      <Container>
         <h1>List Of Mentors</h1>
         <List>
-          {}
+          {[mentors].map((mentors) => (
+            <Card>{mentors}</Card>
+          ))}
         </List>
-      </Container> */}
+      </Container>
     </>
   );
 };
