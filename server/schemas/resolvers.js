@@ -21,6 +21,14 @@ const resolvers = {
           // .populate('mentors')
           // .populate('interests');
       },
+      mentors: async (parent, args, context) => {
+        console.log(context);
+        if (context) {
+          const mentorData = await User.find()
+          return mentorData;
+
+        }
+      }
       },
       Mutation:{
         addUser: async(parent, args) => {

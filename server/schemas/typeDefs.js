@@ -8,6 +8,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    isMentor: Boolean
   }
   type Auth {
     token:ID!
@@ -16,6 +17,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    mentors: [User]
   }
   type Mutation {
     login(email:String!, password: String!): Auth
