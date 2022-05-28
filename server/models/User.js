@@ -28,19 +28,30 @@ const userSchema = new Schema({
     },
     aboutText: {
       type: String,
+    },  
+    role: {
+      type: String,
+      enum: ["User", "Mentor"],
+      default: "User",
+    },
+    mentors:[
+      {
+        type: Schema.Types.objectId,
+        ref:'User'
+      }
+    ],
+    mentees:[
+    {
+      type: Schema.Types.objectId,
+      ref:'User'
     }
-    // mentors:[
-    //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Mentors'
-    //   }
-    // ],
-    // interests:[
-    //      //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Interests'
-    //   }
-    //]
+    ],
+    interests:[
+      {
+        type: Schema.Types.objectId,
+        ref:'Interests'
+      }
+    ]
   });
 
   // set up pre-save middleware to create password

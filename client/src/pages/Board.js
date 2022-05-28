@@ -114,15 +114,16 @@ const Board = (props) => {
             </p>
           </div>
         </div>
-      </main>
-      {/* <Container>
+        <container>
         <h1>List Of Mentors</h1>
-        <List>
+        <list>
           {[mentors].map((mentors) => (
-            <Card>{mentors}</Card>
+            <card>{mentors}</card>
           ))}
-        </List>
-      </Container> */}
+        </list>
+      </container>
+      </main>
+
     </>
   );
 };
