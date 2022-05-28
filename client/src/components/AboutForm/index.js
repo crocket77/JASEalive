@@ -41,12 +41,10 @@ const AboutForm = ({_id}) => {
       
       const handleFormSubmit = async event => {
         event.preventDefault();
-        
         try {
           console.log(_id)
           // add about to database
           await addAbout({
-
             variables: { _id, aboutText }
           });
           console.log("anything")

@@ -35,7 +35,7 @@ const resolvers = {
           return { token, user };
         },
         addAbout: async (parent, args) => {
-        
+          console.log(args)
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
 

@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 
 export const ADD_ABOUT = gql`
   mutation addAbout($_id:ID!, $aboutText: String!) {
-    addAbout(_id:$userID,aboutText: $aboutText) {
+    addAbout(_id:$_id,aboutText: $aboutText) {
       _id
       aboutText
       createdAt

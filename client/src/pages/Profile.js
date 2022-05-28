@@ -44,6 +44,10 @@ const Profile = (props) => {
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
           Viewing {username ? `${user.username}'s` : 'your'} profile.
         </h2>
+        <div>
+        <div className='card-header-title'>About:</div>
+        <section className='card-content'>{user.aboutText ? `${user.aboutText}` : 'Add an about to tell us what you know.'}</section>
+        </div>
         {loggedIn && (
           <div className="col-12 mb-3">
             <AboutForm _id={user._id}/>
