@@ -18,6 +18,7 @@ const Home = () => {
             <button className='button bg-secondary has-text-black-bis'>Check out our mentors</button>
           </Link>
         </div>
+        <div><iframe width="280" height="158" src="https://www.youtube.com/embed/FXKYwM0f5WU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         <div className='about col-12 mb-3 ml-3'>
           <h5>Disclaimer:</h5>
             <p className='w-100'>
