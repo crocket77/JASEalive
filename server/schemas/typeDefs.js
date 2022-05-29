@@ -10,6 +10,11 @@ const typeDefs = gql`
     email: String
     isMentor: Boolean
     aboutText: String
+    role: String
+    mentors:[User]
+    mentees:[User]
+
+
   }
   type Auth {
     token:ID!

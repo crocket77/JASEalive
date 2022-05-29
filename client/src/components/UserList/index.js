@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserList = ({ friendCount, username, friends }) => {
-  if (!friends || !friends.length) {
-    return <p className="bg-dark text-light p-3">{username}, make some friends!</p>;
-  }
+const UserList = ({role}) => {
+//   if (!friends || !friends.length) {
+//     return <p className="bg-dark text-light p-3">{username}, make some friends!</p>;
+//   }
+
+  const { users } = cache.readQuery({ query: QUERY_USERS});
+  console.log(users)
 
   return (
     <div>
