@@ -18,21 +18,21 @@ const Header = () => {
  
 
   return (
-    <header className=" bg-secondary mb-4">
-      <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
-         <div className='navbar-brand '>
+    <header className=" bg-secondary mb-4 ">
+      <nav className="is-fixed-top  align-center is-justify-content-space-between is-white is-flex">
+        <div className='navbar-brand life_sherpa'>
             
-            <Link to="/" className='navbar-item '>
-              <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
+            <Link to="/" className='navbar-item  '>
+              <h1 className='has-text-black-bis is-size-1 is-size-4-mobile '>Life Sherpa</h1>
             </Link>
-          </div>
-          <div className="navbar text-center navbar-end bg-secondary">
-          <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary  " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+        </div>
+        <div className="navbar text-center navbar-end bg-secondary  ">
+          <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary  burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
               onClick={toggleBurgerMenu}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-              </a>
+          </a>
           {Auth.loggedIn() ? (
             <>
             <div className='bg-secondary has-dropdown'>
