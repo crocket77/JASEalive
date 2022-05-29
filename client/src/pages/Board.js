@@ -6,10 +6,10 @@ import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';
 
 const Board = (props) => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
     variables: { username: userParam },
   });
-  const user = data?.me || data?.user || {};
+  const user = data?.me || data?.user || data?.mentor || {};  // ADDED data?.mentor HERE
 
   const [topic, setTopic] = useState('all');
   const handleTopicChange = (event) => {
@@ -17,10 +17,6 @@ const Board = (props) => {
   }
 
   // const { mentors } = useQuery(QUERY_MENTOR)
-
-  const fetchMentors = async (user) =>
-    await (await fetch("http://localhost:3001/users")).json();
-  const { mentors, error, status } = useQuery("users", fetchMentors);
 
 
   // navigate to personal profile page if username is yours
@@ -46,7 +42,10 @@ const Board = (props) => {
       <div className="tile is-3 is-vertical is-parent">
         <h3>List of Current Mentors</h3>
         <div className="tile is-child box">
-          <p>MENTORS GO HERE</p>
+          {user.filter(user => user.role('Mentor')).map(filteredMentor => (     // ADDED THIS FILTER METHOD HERE, ask about user model for mentor status like line 9
+            <h1>{filteredMentor.username}</h1>,  // DOESNT LIKE COMMA HERE
+            <p>{filteredMentor.about}</p>
+          ))}
         </div>
         <div className="tile is-child box">
           <p>MENTORS GO HERE</p>
