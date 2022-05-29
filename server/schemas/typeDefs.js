@@ -16,6 +16,16 @@ const typeDefs = gql`
 
 
   }
+  type Categories {
+    category: String
+  }
+  type Wisdom {
+    _id: ID
+    wisdomText: String
+    youTubeLink: String
+    
+    username: String
+  }
   type Auth {
     token:ID!
     user:User
@@ -25,11 +35,16 @@ const typeDefs = gql`
     user(username: String!): User
     users: [User]
     mentors: [User]
+    categories: [Categories]
+    wisdomSingle(_id: ID!): Wisdom
+    wisdomMentor(username: String!): [Wisdom]
+    wisdomAll: [Wisdom]
   }
   type Mutation {
-    login(email:String!, password: String!): Auth
-    addUser(username:String!, email: String!, password:String!): Auth
-    addAbout(_id:ID!, aboutText:String!):User
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addAbout(_id: ID!, aboutText: String!):User
+    addWisdom(wisdomText: String!, youTubeLink: String, username: String!): Auth
   }
 `;
 
