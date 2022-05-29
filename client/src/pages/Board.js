@@ -1,4 +1,4 @@
-import React, { useState, Container, List, Card } from 'react';
+import React, { useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';
@@ -16,7 +16,12 @@ const Board = (props) => {
     setTopic(event.target.value);
   }
 
-  const { mentors } = useQuery(QUERY_MENTOR)
+  // const { mentors } = useQuery(QUERY_MENTOR)
+
+  const fetchMentors = async (user) =>
+    await (await fetch("http://localhost:3001/users")).json();
+  const { mentors, error, status } = useQuery("users", fetchMentors);
+
 
   // navigate to personal profile page if username is yours
   // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -37,94 +42,72 @@ const Board = (props) => {
   // }
   
   return (
-    <>
-      <main>
-        <h1>Mentor Board</h1>
-        <div className='flex-row justify-space-between'>
-          <div className='about col-12 mb-3 ml-3'>
-            <p className='w-100'>
-              Here you can find Mentor videos surrounding a plethora of topics! 
-            </p>
-            <div className="dropdown is-hoverable">
-              <div className="dropdown-trigger">
-                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-                  <span>Topics!</span>
-                  <span className="icon is-small">
-                    <i className="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div className="dropdown-menu" id="dropdown-menu2" role="menu">
-                <div className="dropdown-content">
-                  <div className="dropdown-item">
-                    <p>Coding</p>
-                  </div>
-                  <div className="dropdown-item">
-                    <p>Fitness</p>
-                  </div>
-                  <div className="dropdown-item">
-                    <p>Music</p>
-                  </div>
-                  <div className="dropdown-item">
-                    <p>Nutrition</p>
-                  </div>
-                  <div className="dropdown-item">
-                    <p>Gaming</p>
-                  </div>
-                  <hr className="dropdown-divider"></hr>
-                  <div className="dropdown-item">
-                    <p>All</p>
-                  </div>
+    <div className="tile is ancestor">
+      <div className="tile is-3 is-vertical is-parent">
+        <h3>List of Current Mentors</h3>
+        <div className="tile is-child box">
+          <p>MENTORS GO HERE</p>
+        </div>
+        <div className="tile is-child box">
+          <p>MENTORS GO HERE</p>
+        </div>
+        <div className="tile is-child box">
+          <p>MENTORS GO HERE</p>
+        </div>
+        <div className="tile is-child box">
+          <p>MENTORS GO HERE</p>
+        </div>
+      </div>
+      <div className='tile is-parent flex-row justify-space-between'>
+        <div className='about col-12 mb-3 ml-3'>
+          <div className="dropdown is-hoverable">
+            <div className="dropdown-trigger">
+              <button className="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <span>Topics!</span>
+                <span className="icon is-small">
+                  <i className="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu2" role="menu">
+              <div className="dropdown-content">
+                <div className="dropdown-item">
+                  <p>Coding</p>
+                </div>
+                <div className="dropdown-item">
+                  <p>Fitness</p>
+                </div>
+                <div className="dropdown-item">
+                  <p>Music</p>
+                </div>
+                <div className="dropdown-item">
+                  <p>Nutrition</p>
+                </div>
+                <div className="dropdown-item">
+                  <p>Gaming</p>
+                </div>
+                <hr className="dropdown-divider"></hr>
+                <div className="dropdown-item">
+                  <p>All</p>
                 </div>
               </div>
-              {/* <Dropdown
-                label = "Available Mentor Topics"
-                options = {[
-                  { label: 'All', value: 'all' },
-                  { label: 'Coding', value: 'coding' },
-                  { label: 'Fitness', value: 'fitness' },
-                  { label: 'Music', value: 'music' },
-                  { label: 'Nutrition', value: 'nutrition' },
-                  { label: 'Gaming', value: 'gaming' }
-                ]}
-                value = { topic }
-                onChange = { handleTopicChange }
-              /> */}
-              {/* <label>
-                {label}
-                <select value={value} onChange={onChange}>
-                  {options.map((option) => (
-                    <option value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </label> */}
-              {/* <label>
-                Mentor Video Topics
-                <select value={value} onChange={handleChange}>
-                  <option value="coding">Coding</option>
-                  <option value="fitness">Fitness</option>
-                  <option value="music">Music</option>
-                  <option value="nutrition">Nutrition</option>
-                  <option value="gaming">Gaming</option>
-                </select>
-              </label> */}
             </div>
-            <p className='w-100'>
-              Recently Added Videos:
-            </p>
           </div>
+          <p className='w-100'>
+            Here you can find Mentor videos surrounding a broad range of topics! 
+          </p>
         </div>
-        <container>
-        <h1>List Of Mentors</h1>
-        <list>
-          {[mentors].map((mentors) => (
-            <card>{mentors}</card>
-          ))}
-        </list>
-      </container>
-      </main>
-
-    </>
+        <div id='box1'className='container is-fluid col-12 mb-3 ml-3 is-transparent  has-text-black-bis p-2 pl-9 pb-5'>
+          <div  className='pl-9'>
+            <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
+            <p className='w-100 has-text-black has-text-weight-medium'>
+              HERE IS WHERE THE VIDEOS WILL GO MUST FIGURE OUT HOW TO MAKE THIS CONTAINER NOT EXTEND THE LENGTH OF THE PAGE AND INSTEAD ADD
+              A SCROLL BAR SHOULD THE AMOUNT OF VIDEOS DISPLAYED EXCEEED THE NORMAL PAGE LIMIT.
+            </p>
+          </div> 
+        </div>
+      </div>
+    </div>
   );
 };
 
