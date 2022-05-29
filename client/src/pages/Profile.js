@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
 
@@ -10,6 +10,9 @@ const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
 
   const { username } = useParams();
+
+  
+
 
   useEffect(() => {
     console.log(`/profile/${ username }`);
@@ -76,7 +79,9 @@ const Profile = (props) => {
         </div>
       </div>
       {/* <div className="mb-3">{!userParam && <ThoughtForm />}</div> */}
+      
     </div>
+    
   );
 };
 

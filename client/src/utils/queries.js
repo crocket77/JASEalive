@@ -36,8 +36,8 @@ export const QUERY_WISDOM = gql`
 `;
 
 export const QUERY_USERS = gql`
-  query user {
-    user{
+  query users {
+    users{
       _id
       username
       email
