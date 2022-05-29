@@ -1,4 +1,6 @@
 const User = require('./User');
-const Mentor = require('./Mentor');
 
-module.exports = { User, Mentor };
+const Categories = require('./Categories');
+const Wisdom = require('./Wisdom');
+
+module.exports = { User, Categories, Wisdom };

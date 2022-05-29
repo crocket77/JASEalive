@@ -42,6 +42,7 @@ const Header = () => {
                   <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
                   <Link to="/board" className="navbar-item" onClick={toggleBurgerMenu}>Mentor Board</Link>
                   <Link to="/" className="navbar-item" onClick={logout}>Logout</Link>
+                  <Link to="/test" className="navbar-item " onClick={toggleBurgerMenu}>test</Link>
               </div>
             </div>
             </>
@@ -53,7 +54,7 @@ const Header = () => {
               <Link to="/board" className="navbar-item" onClick={toggleBurgerMenu}>Mentor Board</Link>
               <Link to="/login" className="navbar-item " onClick={toggleBurgerMenu}>Login</Link>
               <Link to="/signup" className="navbar-item " onClick={toggleBurgerMenu}>Signup</Link>
-              
+              <Link to="/test" className="navbar-item " onClick={toggleBurgerMenu}>test</Link>
             </div>
             </>
           )}

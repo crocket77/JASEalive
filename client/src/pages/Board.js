@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Container, List, card } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';

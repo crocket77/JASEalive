@@ -13,7 +13,7 @@ export const QUERY_ABOUT = gql`
 
 export const QUERY_WISDOMS = gql`
   query wisdoms($username: String) {
-    wisdoms(username: $username) {
+    wisdomMentor(username: $username) {
       _id
       wisdomText
       createdAt
@@ -26,7 +26,7 @@ export const QUERY_WISDOMS = gql`
 
 export const QUERY_WISDOM = gql`
   query wisdom($id: ID!) {
-    wisdom(_id: $id) {
+    wisdomSingle(_id: $id) {
       _id
       wisdomText
       createdAt
@@ -36,8 +36,8 @@ export const QUERY_WISDOM = gql`
 `;
 
 export const QUERY_USERS = gql`
-  query user {
-    user{
+  query users {
+    users{
       _id
       username
       email
