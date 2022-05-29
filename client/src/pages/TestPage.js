@@ -117,7 +117,7 @@ const Test = (props) => {
         </div>
         <div>
             <h1>List Of Mentors</h1>
-            <UserList usersarr={data.users} role="mentor"></UserList>  
+            <UserList usersarr={data.users} role="Mentor"></UserList>  
         </div>
       </main>
 
