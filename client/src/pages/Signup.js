@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import 'react-dropdown/style.css';
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -59,13 +60,25 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="password"
                 name="password"
                 type="password"
                 id="password"
                 value={formState.password}
                 onChange={handleChange}
               />
+              <p className='has-text-centered'>Mentee or Mentor?</p>
+              <select                
+                className="form-input"
+                name="role"
+                type="role"
+                id="role"
+                value={formState.role}
+                onChange={handleChange}>
+                <option value="user">Mentee</option>
+                <option value="mentor">Mentor</option>
+              </select>
+
               <button className="btn d-block w-100" type="submit">
                 Submit
               </button>

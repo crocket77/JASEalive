@@ -35,6 +35,17 @@ export const QUERY_WISDOM = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query user {
+    user{
+      _id
+      username
+      email
+      aboutText
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
