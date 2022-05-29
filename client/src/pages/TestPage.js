@@ -3,12 +3,12 @@ import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 
 const Test = (props) => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(QUERY_USERS);
-  const user = data?.me || data?.user || {};
+  // const user = data?.me || data?.user || {};
 
   const [topic, setTopic] = useState('all');
   const handleTopicChange = (event) => {
@@ -18,15 +18,15 @@ const Test = (props) => {
  
   
   console.log(data)
+    // navigate to personal profile page if username is yours
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Navigate to="/profile:username" />;
+  }
 
-  // navigate to personal profile page if username is yours
-  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-  //   return <Navigate to="/board" />;
-  // }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
 
   // if (!user?.username) {
   //   return (
