@@ -8,10 +8,10 @@ const wisdomSchema = new Schema({
   youTubeLink: {
     type: String
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now
+  // },
   username: {
     type: String,
     required: true

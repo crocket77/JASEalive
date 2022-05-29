@@ -18,7 +18,7 @@ const typeDefs = gql`
     _id: ID
     wisdomText: String
     youTubeLink: String
-    createdAt: Date
+    
     username: String
   }
   type Auth {

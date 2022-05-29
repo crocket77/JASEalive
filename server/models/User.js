@@ -23,9 +23,6 @@ const userSchema = new Schema({
       required: true,
       minlength: 5
     },
-    isMentor: {
-      type: Boolean
-    },
     aboutText: {
       type: String,
     },  
@@ -34,24 +31,24 @@ const userSchema = new Schema({
       enum: ["User", "Mentor"],
       default: "User",
     },
-    mentors:[
-      {
-        type: Schema.Types.objectId,
-        ref:'User'
-      }
-    ],
-    mentees:[
-    {
-      type: Schema.Types.objectId,
-      ref:'User'
-    }
-    ],
-    interests:[
-      {
-        type: Schema.Types.objectId,
-        ref:'Interests'
-      }
-    ]
+    // mentors:[
+    //   {
+    //     type: Schema.Types.objectId,
+    //     ref:'User'
+    //   }
+    // ],
+    // mentees:[
+    // {
+    //   type: Schema.Types.objectId,
+    //   ref:'User'
+    // }
+    // ],
+    // interests:[
+    //   {
+    //     type: Schema.Types.objectId,
+    //     ref:'Interests'
+    //   }
+    // ]
   });
 
   // set up pre-save middleware to create password
