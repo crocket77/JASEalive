@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
 import Auth from '../utils/auth';
+import { BackgroundImage } from "react-image-and-background-image-fade";
 
 const Test = (props) => {
   const { username: userParam } = useParams();
@@ -39,7 +40,15 @@ const Test = (props) => {
   
   return (
     <>
+
       <main>
+      <BackgroundImage
+      src="https://source.unsplash.com/random/800x600"
+      width="800px"
+      height="400px"
+      isResponsive
+      className="image"
+    />
         <h1>Mentor Board</h1>
         <div className='flex-row justify-space-between'>
           <div className='about col-12 mb-3 ml-3'>
