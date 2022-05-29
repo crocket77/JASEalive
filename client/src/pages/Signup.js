@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-// import 'react-dropdown/style.css';
+import './assets/Signup.css';
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -33,10 +33,10 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <main id='container' className="flex-row justify-center mb-4">
       <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Sign Up</h4>
+        <div className="card card-media-margin-2rems">
+          <h4 className="card-header ">SIGN UP </h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
@@ -77,10 +77,12 @@ const Signup = () => {
                 <option value="user">Mentee</option>
                 <option value="mentor">Mentor</option>
               </select>
-
-              <button className="btn d-block w-100" type="submit">
+               
+               <div className='px-auto'>
+              <button className="btn d-block w-100 h-10 button is-light button is-rounded" type="submit">
                 Submit
               </button>
+              </div>
             </form>
 
             {error && <div>Signup failed</div>}

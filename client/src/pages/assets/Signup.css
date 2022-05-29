@@ -1,0 +1,49 @@
+body{
+    background-image: url("https://i.ytimg.com/vi/JsM910nw_k8/maxresdefault.jpg");
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+
+input{
+    height: 46px;
+    font-family:monospace;
+    
+}
+select {
+    height: 46px;
+    font-family:monospace;
+    color: black;
+}
+button {
+    justify-content: center;
+}
+
+
+
+.card{
+    width:600px;
+    height: 380px;
+    background-color:rgba(170, 172, 200, 0.626);
+    margin-top: 98px;
+   
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    word-spacing: 10px;
+    background-color: rgba(213, 216, 252, 0.5);
+    color: black;
+}
+
+
+
+@media screen and (max-width: 844px) {
+    .card {
+        width:auto;
+        height: auto;
+    }
+}
