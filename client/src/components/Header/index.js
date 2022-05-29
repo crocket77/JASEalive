@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import 'bulma/css/bulma.min.css'
-
 import Auth from '../../utils/auth';
+//import yeti from '../..assets/images/'
+//import { ReactComponent as Logo } from '../assets/images/yeti.svg';
 
 const Header = () => {
   const logout = event => {
-    toggleBurgerMenu();
+    // toggleBurgerMenu();
     event.preventDefault();
     Auth.logout();
   };
@@ -21,6 +21,7 @@ const Header = () => {
     <header className=" bg-secondary mb-4">
       <nav className="is-fixed-top flex-row align-center is-justify-content-space-between is-white">
          <div className='navbar-brand '>
+            
             <Link to="/" className='navbar-item '>
               <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
             </Link>
@@ -47,6 +48,9 @@ const Header = () => {
           ) : (
             <>
             <div id="navbarBasic" className="navbar-menu bg-secondary">
+              <Link to="/" className="navbar-item" onClick={toggleBurgerMenu}>Home</Link>
+              <Link to="/profile" className="navbar-item" onClick={toggleBurgerMenu}>Dashboard</Link>
+              <Link to="/board" className="navbar-item" onClick={toggleBurgerMenu}>Mentor Board</Link>
               <Link to="/login" className="navbar-item " onClick={toggleBurgerMenu}>Login</Link>
               <Link to="/signup" className="navbar-item " onClick={toggleBurgerMenu}>Signup</Link>
               
