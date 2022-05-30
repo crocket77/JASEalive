@@ -56,6 +56,10 @@ const Profile = (props) => {
       console.error(e);
     }
   };
+  var userMentor=false;
+  if(!username && user.role==="Mentor"){
+    userMentor=true;
+  }
   
   return (
     <div>
@@ -90,7 +94,7 @@ const Profile = (props) => {
           </button>
           }
                   
-          {!username ? 
+          {!username && 
             <div className="col-12 mb-3">
             <h1>Mentors:</h1>
             {user.mentors && (user.mentors).map(mentor => (
@@ -98,11 +102,17 @@ const Profile = (props) => {
                   <Link to={`/profile/${mentor.username}`}>{mentor.username}</Link>
                 </button>
               ))}
-            </div>
-             : ''      
-
-        
+            </div>     
           }
+          {userMentor&&
+            <div className="col-12 mb-3">
+            <form className="topping">
+              <input type="checkbox" id="topping" name="topping" value="Paneer" />Coding
+            </form>
+
+            </div>
+          }
+
           {/* <FriendList
             username={user.username}
             friendCount={user.friendCount}
