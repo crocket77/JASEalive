@@ -16,7 +16,7 @@ export const QUERY_WISDOMS = gql`
     wisdomMentor(username: $username) {
       _id
       wisdomText
-      createdAt
+      youTubeLink
       username
     }
   }
@@ -29,7 +29,7 @@ export const QUERY_WISDOM = gql`
     wisdomSingle(_id: $id) {
       _id
       wisdomText
-      createdAt
+      youTubeLink
       username
     }
   }

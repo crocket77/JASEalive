@@ -15,7 +15,13 @@ const wisdomSchema = new Schema({
   username: {
     type: String,
     required: true
-  }
+  },
+  topic: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Categories'
+    }
+  ]
 },
 {
   toJSON: {
