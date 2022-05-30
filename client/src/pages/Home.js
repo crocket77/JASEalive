@@ -6,8 +6,8 @@ import './assets/Home.css';
 const Home = () => {
   
   return (
-    <main id='Home'>
-      <div className='flex-row justify-space-between'>
+    <main>
+      <div className='flex-row justify-space-around'>
         <div id='box1'className=' container col-12 mb-3 ml-3 is-transparent  has-text-black-bis p-2 pl-9 pb-5'>
          <div  className='pl-9'>
            <h2 className='title2 has-text-black has-text-weight-medium'>What is Life Sherpa:</h2>

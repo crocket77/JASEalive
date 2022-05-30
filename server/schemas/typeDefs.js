@@ -11,8 +11,10 @@ const typeDefs = gql`
     isMentor: Boolean
     aboutText: String
     role: String
+    mentorCount:Int
     mentors:[User]
     mentees:[User]
+    topics:[String]
 
 
   }
@@ -42,9 +44,11 @@ const typeDefs = gql`
   }
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!,role:String!): Auth
     addAbout(_id: ID!, aboutText: String!):User
     addWisdom(wisdomText: String!, youTubeLink: String, username: String!): Auth
+    addMentor(mentorId:ID!):User
+    updateTopic(_id:ID!,topic:String!):User
   }
 `;
 

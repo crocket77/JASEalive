@@ -8,7 +8,11 @@ const resolvers = {
         me: async (parent, args, context) => {
           if (context.user) {
             const userData = await User.findOne(context.user)
-            .select('-__v -password');
+            .select('-__v -password')
+            .populate('mentors')
+            .populate('mentees');
+
+
       
           return userData;
           }
@@ -16,13 +20,16 @@ const resolvers = {
         },
         user: async (parent, { username }) => {
           return User.findOne({ username })
-            .select('-__v -password');
+            .select('-__v -password')
+            .populate('mentors')
+            .populate('mentees');
         },
         // get all users
         users: async () => {
           return User.find()
             .select('-__v -password')
-            // .populate('mentors')
+            .populate('mentors')
+            .populate('mentees')
             // .populate('interests');
         },
         mentors: async (parent, args, context) => {
@@ -51,6 +58,19 @@ const resolvers = {
         }
       },
       Mutation:{
+        addMentor: async (parent, { mentorId }, context) => {
+          if (context.user) {
+            const updatedUser = await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: { mentors: mentorId } },
+              { new: true }
+            ).populate('mentors');
+    
+            return updatedUser;
+          }
+    
+          throw new AuthenticationError('You need to be logged in!');
+        },
         addUser: async(parent, args) => {
           // make args lowercase
           const user = await User.create(args);

@@ -42,6 +42,7 @@ export const QUERY_USERS = gql`
       username
       email
       aboutText
+      role
     }
   }
 `;
@@ -53,6 +54,15 @@ export const QUERY_USER = gql`
       username
       email
       aboutText
+      role
+      mentors{
+        _id
+        username
+      }
+      mentees{
+        _id
+        username
+      }
     }
   }
 `;
@@ -64,6 +74,15 @@ export const QUERY_ME = gql`
       username
       email
       aboutText
+      role
+      mentors{
+        _id
+        username
+      }
+      mentees{
+        _id
+        username
+      }
     }
   }
 `;

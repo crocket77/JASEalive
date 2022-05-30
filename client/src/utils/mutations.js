@@ -13,12 +13,13 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $email: String!, $password: String!,$role:String!) {
+    addUser(username: $username, email: $email, password: $password,role:$role) {
       token
       user {
         _id
         username
+      
       }
     }
   }
@@ -51,6 +52,20 @@ export const ADD_MENTEE = gql`
       username
       menteeCount
       mentees {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_MENTOR = gql`
+  mutation addMentor($id: ID!) {
+    addMentor(mentorId: $id) {
+      _id
+      username
+      mentorCount
+      mentors{
         _id
         username
       }

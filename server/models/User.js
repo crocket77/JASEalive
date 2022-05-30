@@ -31,25 +31,26 @@ const userSchema = new Schema({
       enum: ["User", "Mentor"],
       default: "User",
     },
-    // mentors:[
-    //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'User'
-    //   }
-    // ],
-    // mentees:[
-    // {
-    //   type: Schema.Types.objectId,
-    //   ref:'User'
-    // }
-    // ],
-    // interests:[
-    //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Interests'
-    //   }
-    // ]
-  });
+    mentors:[
+      {
+        type: Schema.Types.ObjectId,
+        ref:'User'
+      }
+    ],
+    mentees:[
+      {
+        type: Schema.Types.ObjectId,
+        ref:'User'
+      }
+    ],
+    topics:[String]
+  },
+  {
+    toJSON: {
+      virtuals: true
+    }
+  }
+  );
 
   // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
@@ -65,6 +66,10 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('friendCount').get(function() {
+  return this.mentors.length;
+});
 
 const User = model('User', userSchema);
 
