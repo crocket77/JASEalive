@@ -3,6 +3,7 @@ import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
+import WisdomForm from '../components/WisdomForm';
 import Auth from '../utils/auth';
 import { BackgroundImage } from "react-image-and-background-image-fade";
 
@@ -127,6 +128,9 @@ const Test = (props) => {
         <div>
             <h1>List Of Mentors</h1>
             <UserList usersarr={data.users} role="Mentor"></UserList>  
+        </div>
+        <div>
+          <WisdomForm></WisdomForm>
         </div>
       </main>
     </>
