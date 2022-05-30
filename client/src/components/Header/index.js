@@ -24,7 +24,7 @@ const Header = () => {
          <div className='navbar-brand '>
             
             <Link to="/" className='navbar-item '>
-              <h1 className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
+              <h1  id="title" className='has-text-black-bis is-size-1 is-size-3-mobile '>Life Sherpa</h1>
             </Link>
           </div>
           <div className="navbar text-center navbar-end bg-secondary">
