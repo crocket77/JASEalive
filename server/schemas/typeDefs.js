@@ -14,6 +14,7 @@ const typeDefs = gql`
     mentorCount:Int
     mentors:[User]
     mentees:[User]
+    topics:[String]
 
 
   }
@@ -47,6 +48,7 @@ const typeDefs = gql`
     addAbout(_id: ID!, aboutText: String!):User
     addWisdom(wisdomText: String!, youTubeLink: String, username: String!): Auth
     addMentor(mentorId:ID!):User
+    updateTopic(_id:ID!,topic:String!):User
   }
 `;
 

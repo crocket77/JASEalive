@@ -57,26 +57,55 @@ const Profile = (props) => {
     }
   };
   var userMentor=false;
+  var mentorProfile=false;
+  var userProfile=false;
   if(!username && user.role==="Mentor"){
     userMentor=true;
   }
+  if(username&&user.role==="Mentor"){
+    mentorProfile=true;
+  }
+  if(username&&user.role==="User"){
+    userProfile=true;
+  }
   
   return (
-    <div>
-      <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+    <div className= "">
+      <div className=" mb-3 is-justify-content-center ">
+        <h2 className="bg-secondary is-black-bis p-3 profileTitle mb-3 has-text-centered">
           Viewing {username ? `${user.username}'s` : 'your'} profile.
         </h2>
-        <div>
-        <div className='card-header-title'>About:</div>
-        <section className='card-content'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
+        
+        <div className='textClass'>
+        <div className='card-header-title has-text-black is-flex'>About:</div>
+        <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
         </div>
-        {username ? '' :
+        {userMentor&&
+            <div className="col-12 my-3 p-3 textClass">
+              <h3>Mentor topics you want to cover:</h3>
+              <form className="ml-1">
+                <input type="checkbox" id="coding" name="coding" value="coding" />Coding
+                <br></br>
+                <input type="checkbox" id="coding" name="coding" value="guitar" />Guitar
+                <br></br>
+                <input type="checkbox" id="coding" name="coding" value="fitness" />Fitness
+                <br></br>
+                <input type="checkbox" id="coding" name="coding" value="parenting" />Parenting
+                <br></br>
+                <input type="checkbox" id="coding" name="coding" value="life" />Life
+                <br></br>
+                <button className="btn w-100 " onClick={handleClick}>
+                  update
+                </button>
+              </form>
+            </div>
+          }
+        {!username &&
           <div className="col-12 mb-3">
             <AboutForm _id={user._id}/>
           </div>
         }
-       </div>
+      </div>
 
       <div className="flex-row justify-space-between mb-3">
         <div className="col-12 mb-3 col-lg-8">
@@ -88,29 +117,21 @@ const Profile = (props) => {
 
         <div className="col-12 col-lg-3 mb-3">
 
-          {user.role==="Mentor" && 
+          {mentorProfile&& 
           <button className="btn ml-auto" onClick={handleClick}>
               Add Mentor
           </button>
           }
                   
-          {!username && 
+          {userProfile && 
             <div className="col-12 mb-3">
-            <h1>Mentors:</h1>
+            <h1 className='is-justify-content-left'>Mentors:</h1>
             {user.mentors && (user.mentors).map(mentor => (
                 <button className="btn w-100 display-block mb-2" key={mentor._id}>
                   <Link to={`/profile/${mentor.username}`}>{mentor.username}</Link>
                 </button>
               ))}
             </div>     
-          }
-          {userMentor&&
-            <div className="col-12 mb-3">
-            <form className="topping">
-              <input type="checkbox" id="topping" name="topping" value="Paneer" />Coding
-            </form>
-
-            </div>
           }
 
           {/* <FriendList

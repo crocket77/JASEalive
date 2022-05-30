@@ -43,12 +43,7 @@ const userSchema = new Schema({
         ref:'User'
       }
     ],
-    // interests:[
-    //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Interests'
-    //   }
-    // ]
+    topics:[String]
   },
   {
     toJSON: {
