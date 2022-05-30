@@ -22,7 +22,8 @@ const resolvers = {
         users: async () => {
           return User.find()
             .select('-__v -password')
-            // .populate('mentors')
+            .populate('mentors')
+            .populate('mentees')
             // .populate('interests');
         },
         mentors: async (parent, args, context) => {

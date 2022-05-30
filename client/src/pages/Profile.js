@@ -49,6 +49,7 @@ const Profile = (props) => {
   }
 
   const handleClick = async () => {
+    console.log(user.username)
     try {
       await addMentor({variables: { id: user._id }});
     } catch (e) {
