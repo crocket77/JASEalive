@@ -11,6 +11,7 @@ const typeDefs = gql`
     isMentor: Boolean
     aboutText: String
     role: String
+    category: [Categories]
     mentorCount:Int
     mentors:[User]
     mentees:[User]
@@ -25,7 +26,6 @@ const typeDefs = gql`
     _id: ID
     wisdomText: String
     youTubeLink: String
-    
     username: String
   }
   type Auth {

@@ -1,0 +1,102 @@
+[
+  {
+    "username" : "Bob", 
+        "email" : "Abrakadabera@poke.com", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Joe", 
+        "email" : "asdfasdf@asdf.sadf", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Emma", 
+        "email" : "qwerweqr@weqr.qwer", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Jane", 
+        "email" : "tryurtyu@ertuy.ter", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Tom", 
+        "email" : "sdfgsdfg@dfgh.dfgh", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Denise", 
+        "email" : "tyujtyuj@rtey.ergh", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Laura", 
+        "email" : "iuopuiop@uiop.uiop", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Jack", 
+        "email" : "bvnmvbnm@vbnm.vbnm", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Paul", 
+        "email" : "ghjkghjk@fghj.fghj", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Lance", 
+        "email" : "zzxcvzxcv@zxcv.zxcv", 
+        "password" : "test1234", 
+        "role" : "User",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  }
+]
