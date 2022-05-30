@@ -8,37 +8,48 @@ const WisdomList = ({wisdoms, interest}) => {
     return <h3>No Wisdoms Yet</h3>;
   }
 
-  const codingArr=wisdoms.filter(wisdom=>wisdom.topic==="coding")
-  const musicArr=wisdoms.filter(wisdom=>wisdom.topic==="music")
-  const fitnessArr=wisdoms.filter(wisdom=>wisdom.topic==="fitness")
-  const financeArr=wisdoms.filter(wisdom=>wisdom.topic==="finance")
-  const parentingArr=wisdoms.filter(wisdom=>wisdom.topic==="parenting")
+  const codingArr=[]
+  const musicArr=[]
+  const fitnessArr=[]
+  const financeArr=[]
+  const parentingArr=[]
   
-
-  var codingList = false
+  // conditionals that give the correct wisdom.
+  var codingWisdom = false
   if(interest==="coding"&& wisdoms.length>0){
-    codingList=true;
+    codingWisdom=true;
+    codingArr=wisdoms.filter(wisdom=>wisdom.topic==="coding")
+  }
+  var musicWisdom = false
+  if(interest==="music"&& wisdoms.length>0){
+    musicWisdom=true;
+    musicArr=wisdoms.filter(wisdom=>wisdom.topic==="music")
+
+  }
+  var fitnessWisdom = false
+  if(interest==="fitness"&& wisdoms.length>0){
+    fitnessWisdom=true;
+    fitnessArr=wisdoms.filter(wisdom=>wisdom.topic==="fitness")
+  }
+  var financeWisdom = false
+  if(interest==="finance"&& wisdoms.length>0){
+    financeWisdom=true;
+    financeArr=wisdoms.filter(wisdom=>wisdom.topic==="finance")
+  }
+  var parentingWisdom = false
+  if(interest==="parenting"&& wisdoms.length>0){
+    parentingWisdom=true;
+    parentingArr=wisdoms.filter(wisdom=>wisdom.topic==="parenting")
+  }
+  var everythingWisdom = false
+  if(interest==="everything"&& wisdoms.length>0){
+    everythingWisdom=true;
   }
 
     return (
-    
-    //     <div className="tile is-child box">
-    //       {mentorList ? mentorArr.map(user => (
-    //         <button className="btn w-100 display-block mb-2" key={user._id}>
-    //           <Link to={`/profile/${user.username}`}>{user.username}</Link>
-    //           <p>About: {user.aboutText}</p>
-    //         </button>)):
-    //         <p> No Mentors </p>
-    //       }
-    //       {menteeList && mentorArr.map(user => (
-    //         <button className="btn w-100 display-block mb-2" key={user._id}>
-    //           <Link to={`/profile/${user.username}`}>{user.username}</Link>
-    //           <p>About: {user.aboutText}</p>
-    //         </button>))
-    //         }  
     <div>
       {/* <h3>{title}</h3> */}
-      {wisdoms &&
+      {everythingWisdom &&
         wisdoms.map(wisdom => (
           <div key={wisdom._id} className="card mb-3">
             <p className="card-header">
@@ -57,6 +68,107 @@ const WisdomList = ({wisdoms, interest}) => {
             <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         ))}
+
+        {codingWisdom &&
+        codingArr.map(wisdom => (
+          <div key={wisdom._id} className="card mb-3">
+            <p className="card-header">
+              <Link
+                to={`/profile/${wisdom.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {wisdom.username}
+              </Link>{' '}
+              {/* thought on {wisdom.createdAt} */}
+            </p>
+            <div className="card-body">
+                <p>{wisdom.thoughtText}</p>
+            </div>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        ))}
+
+        {musicWisdom &&
+        musicArr.map(wisdom => (
+          <div key={wisdom._id} className="card mb-3">
+            <p className="card-header">
+              <Link
+                to={`/profile/${wisdom.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {wisdom.username}
+              </Link>{' '}
+              {/* thought on {wisdom.createdAt} */}
+            </p>
+            <div className="card-body">
+                <p>{wisdom.thoughtText}</p>
+            </div>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        ))}
+
+        {fitnessWisdom &&
+        fitnessArr.map(wisdom => (
+          <div key={wisdom._id} className="card mb-3">
+            <p className="card-header">
+              <Link
+                to={`/profile/${wisdom.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {wisdom.username}
+              </Link>{' '}
+              {/* thought on {wisdom.createdAt} */}
+            </p>
+            <div className="card-body">
+                <p>{wisdom.thoughtText}</p>
+            </div>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        ))}
+
+        {financeWisdom &&
+        financeArr.map(wisdom => (
+          <div key={wisdom._id} className="card mb-3">
+            <p className="card-header">
+              <Link
+                to={`/profile/${wisdom.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {wisdom.username}
+              </Link>{' '}
+              {/* thought on {wisdom.createdAt} */}
+            </p>
+            <div className="card-body">
+                <p>{wisdom.thoughtText}</p>
+            </div>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        ))}
+
+        {parentingWisdom &&
+        parentingArr.map(wisdom => (
+          <div key={wisdom._id} className="card mb-3">
+            <p className="card-header">
+              <Link
+                to={`/profile/${wisdom.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {wisdom.username}
+              </Link>{' '}
+              {/* thought on {wisdom.createdAt} */}
+            </p>
+            <div className="card-body">
+                <p>{wisdom.thoughtText}</p>
+            </div>
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        ))}
+
     </div>
   );
 };
