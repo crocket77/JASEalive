@@ -43,6 +43,7 @@ export const QUERY_USERS = gql`
       email
       aboutText
       role
+      interest
     }
   }
 `;
@@ -55,6 +56,7 @@ export const QUERY_USER = gql`
       email
       aboutText
       role
+      interest
       mentors{
         _id
         username
@@ -75,6 +77,7 @@ export const QUERY_ME = gql`
       email
       aboutText
       role
+      interest
       mentors{
         _id
         username

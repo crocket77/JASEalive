@@ -77,6 +77,23 @@ const Signup = () => {
                 <option value="User">Mentee</option>
                 <option value="Mentor">Mentor</option>
               </select>
+              
+              <p className='has-text-centered'>What is your main interest?</p>
+              <select                
+                className="form-input"
+                name="interest"
+                type="interest"
+                id="interest"
+                value={formState.interest}
+                onChange={handleChange}>
+                <option value="coding">Coding</option>
+                <option value="music">Music</option>
+                <option value="fitness">Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="parenting">Parenting</option>
+                <option value="everything">Everything</option>
+              </select>
+              
                
                <div className='px-auto'>
               <button className="btn d-block w-100 h-10 button is-light button is-rounded" type="submit">

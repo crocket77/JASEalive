@@ -48,10 +48,20 @@ const Profile = (props) => {
     );
   }
 
+  const handleUpdateClick = async () => {
+    console.log(user.username)
+    try {
+      await addMentor({variables: { id: user._id }});
+      console.log(user.interests)
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const handleClick = async () => {
     console.log(user.username)
     try {
       await addMentor({variables: { id: user._id }});
+      console.log(user.interests)
     } catch (e) {
       console.error(e);
     }
@@ -94,7 +104,7 @@ const Profile = (props) => {
                 <br></br>
                 <input type="checkbox" id="coding" name="coding" value="life" />Life
                 <br></br>
-                <button className="btn w-100 " onClick={handleClick}>
+                <button className="btn w-100 " onClick={handleUpdateClick}>
                   update
                 </button>
               </form>

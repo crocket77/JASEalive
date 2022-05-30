@@ -6,12 +6,15 @@ nav{
 #title {
     color:rgb(37, 41, 43);
     font-family:brush script MT;
-    letter-spacing: 9px;
-    padding-left: 10px;
+    letter-spacing: 2px
 }
 
 #navbarBasic {
     background-image: linear-gradient(to right,rgba(140, 231, 235, 0.749) ,rgb(171, 207, 227) );
   
+}
+
+.burger{
+    background-color: rgb(171, 207, 227);
 }
 
