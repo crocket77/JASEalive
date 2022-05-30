@@ -59,5 +59,19 @@ export const ADD_MENTEE = gql`
   }
 `;
 
+export const ADD_MENTOR = gql`
+  mutation addMentor($id: ID!) {
+    addMentor(mentorId: $id) {
+      _id
+      username
+      mentorCount
+      mentors{
+        _id
+        username
+      }
+    }
+  }
+`;
+
 
 
