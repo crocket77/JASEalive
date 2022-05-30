@@ -28,7 +28,7 @@ const Profile = (props) => {
 
 
   const user = data?.me || data?.user || {};
-  console.log(user.role)
+  console.log(user.mentors)
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/profile" />;
@@ -56,6 +56,10 @@ const Profile = (props) => {
       console.error(e);
     }
   };
+  var userMentor=false;
+  if(!username && user.role==="Mentor"){
+    userMentor=true;
+  }
   
   return (
     <div>
@@ -83,25 +87,32 @@ const Profile = (props) => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-        <h1>Active Mentees</h1>
-          {user.role==="Mentor" ? 
-            <div className="col-12 mb-3">
-            {user.mentees && (user.mentees).map(user => (
-                <button className="btn w-100 display-block mb-2" key={user._id}>
-                  <Link to={`/profile/${user.username}`}>{user.username}</Link>
-                </button>
-              ))}
-            </div>
-             : ''      
 
-        
-          }
           {user.role==="Mentor" && 
           <button className="btn ml-auto" onClick={handleClick}>
               Add Mentor
           </button>
           }
-          
+                  
+          {!username && 
+            <div className="col-12 mb-3">
+            <h1>Mentors:</h1>
+            {user.mentors && (user.mentors).map(mentor => (
+                <button className="btn w-100 display-block mb-2" key={mentor._id}>
+                  <Link to={`/profile/${mentor.username}`}>{mentor.username}</Link>
+                </button>
+              ))}
+            </div>     
+          }
+          {userMentor&&
+            <div className="col-12 mb-3">
+            <form className="topping">
+              <input type="checkbox" id="topping" name="topping" value="Paneer" />Coding
+            </form>
+
+            </div>
+          }
+
           {/* <FriendList
             username={user.username}
             friendCount={user.friendCount}

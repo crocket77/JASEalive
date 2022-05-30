@@ -42,6 +42,7 @@ export const QUERY_USERS = gql`
       username
       email
       aboutText
+      role
     }
   }
 `;
