@@ -6,6 +6,7 @@ import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
 
+
 const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
 
@@ -22,6 +23,7 @@ const Profile = (props) => {
     variables: { username: username },
   });
   
+  console.log(data)
 
   const user = data?.me || data?.user || {};
   
