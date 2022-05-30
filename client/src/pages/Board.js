@@ -1,15 +1,17 @@
-import React, { useState, Container, List, card } from 'react';
+import React, { useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_MENTOR } from '../utils/queries';
-// import Auth from '../utils/auth';
+import { QUERY_USER, QUERY_ME, QUERY_MENTOR, QUERY_USERS } from '../utils/queries';
+import UserList from '../components/UserList';
+import Auth from '../utils/auth';
 
 const Board = (props) => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
-    variables: { username: userParam },
-  });
-  const user = data?.me || data?.user || data?.mentor || {};  // ADDED data?.mentor HERE
+  const { loading, data } = useQuery(QUERY_USERS);
+  // const { loading, data } = useQuery(userParam ? QUERY_USERS : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
+  //   variables: { username: userParam },
+  // });
+  // const user = data?.me || data?.user || data?.mentor || {};  // ADDED data?.mentor HERE
 
   const [topic, setTopic] = useState('all');
   const handleTopicChange = (event) => {
@@ -20,13 +22,13 @@ const Board = (props) => {
 
 
   // navigate to personal profile page if username is yours
-  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-  //   return <Navigate to="/board" />;
-  // }
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Navigate to="/board" />;
+  }
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   // if (!user?.username) {
   //   return (
@@ -40,22 +42,16 @@ const Board = (props) => {
   return (
     <div className="tile is ancestor">
       <div className="tile is-3 is-vertical is-parent">
-        <h3>List of Current Mentors</h3>
-        <div className="tile is-child box">
+        <div className= "tile is-child box">
+            <h2 className="is-underlined">List Of Mentors</h2>
+            <UserList usersarr={data.users} role="Mentor"></UserList>  
+        </div>
+        {/* <div className="tile is-child box">
           {user.filter(user => user.role('Mentor')).map(filteredMentor => (     // ADDED THIS FILTER METHOD HERE, ask about user model for mentor status like line 9
             <h1>{filteredMentor.username}</h1>,  // DOESNT LIKE COMMA HERE
             <p>{filteredMentor.about}</p>
           ))}
-        </div>
-        <div className="tile is-child box">
-          <p>MENTORS GO HERE</p>
-        </div>
-        <div className="tile is-child box">
-          <p>MENTORS GO HERE</p>
-        </div>
-        <div className="tile is-child box">
-          <p>MENTORS GO HERE</p>
-        </div>
+        </div> */}
       </div>
       <div className='tile is-parent flex-row justify-space-between'>
         <div className='about col-12 mb-3 ml-3'>

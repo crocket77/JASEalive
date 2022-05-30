@@ -26,6 +26,7 @@
   "homepage": "https://github.com/crocket77/JASEalive#readme",
   "dependencies": {
     "bulma": "^0.9.4",
-    "init": "^0.1.2"
+    "init": "^0.1.2",
+    "react-image-and-background-image-fade": "^1.0.8"
   }
 }

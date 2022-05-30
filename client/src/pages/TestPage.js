@@ -129,7 +129,6 @@ const Test = (props) => {
             <UserList usersarr={data.users} role="Mentor"></UserList>  
         </div>
       </main>
-
     </>
   );
 };
