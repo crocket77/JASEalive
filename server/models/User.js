@@ -32,6 +32,12 @@ const userSchema = new Schema({
       enum: ["User", "Mentor"],
       default: "User",
     },
+    interest: {
+      type: String,
+      enum: ["coding", "fitness","music","finance","gaming","parenting","everything"],
+      default: "everything",
+
+    },
     category: [
       {
         type: Schema.Types.ObjectId,
@@ -56,7 +62,7 @@ const userSchema = new Schema({
         ref:'User'
       }
     ],
-    topics:[String]
+
   },
   {
     toJSON: {

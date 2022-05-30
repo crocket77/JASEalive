@@ -72,6 +72,7 @@ const resolvers = {
           throw new AuthenticationError('You need to be logged in!');
         },
         addUser: async(parent, args) => {
+          console.log(args)
           // make args lowercase
           const user = await User.create(args);
           const token = signToken(user);

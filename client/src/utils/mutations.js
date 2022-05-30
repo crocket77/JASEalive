@@ -13,8 +13,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!,$role:String!) {
-    addUser(username: $username, email: $email, password: $password,role:$role) {
+  mutation addUser($username: String!, $email: String!, $password: String!,$role:String!,$interest:String!) {
+    addUser(username: $username, email: $email, password: $password, role:$role, interest:$interest) {
       token
       user {
         _id
@@ -72,6 +72,14 @@ export const ADD_MENTOR = gql`
     }
   }
 `;
+
+export const UPDATE_INTERESTS = gql`
+mutation updateInterests($interestsArr:[interests]){
+  updateInterests(interestsArr:$interestsArr){
+    interest
+  }
+}
+`
 
 
 
