@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+// const categoriesSchema = require('./Categories');
 
 const userSchema = new Schema({
     username: {
@@ -31,6 +32,18 @@ const userSchema = new Schema({
       enum: ["User", "Mentor"],
       default: "User",
     },
+    category: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Categories'
+      }
+    ],
+    wisdoms:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Wisdom'
+      }
+    ],
     mentors:[
       {
         type: Schema.Types.ObjectId,
