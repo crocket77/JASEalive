@@ -27,6 +27,7 @@ const typeDefs = gql`
     wisdomText: String
     youTubeLink: String
     username: String
+    topic: [Categories]
   }
   type Auth {
     token:ID!
