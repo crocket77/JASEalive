@@ -74,8 +74,8 @@ const Signup = () => {
                 id="role"
                 value={formState.role}
                 onChange={handleChange}>
-                <option value="user">Mentee</option>
-                <option value="mentor">Mentor</option>
+                <option value="User">Mentee</option>
+                <option value="Mentor">Mentor</option>
               </select>
 
               <button className="btn d-block w-100" type="submit">

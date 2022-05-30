@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
+import { ADD_MENTOR } from '../utils/mutations';
+
 
 const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
 
   const { username } = useParams();
-
+  const [addMentor] = useMutation(ADD_MENTOR);
   
 
 
@@ -23,8 +25,10 @@ const Profile = (props) => {
   });
   
 
+
+
   const user = data?.me || data?.user || {};
-  
+  console.log(user.role)
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/profile" />;
@@ -43,6 +47,15 @@ const Profile = (props) => {
       </h4>
     );
   }
+
+  const handleClick = async () => {
+    console.log(user.username)
+    try {
+      await addMentor({variables: { id: user._id }});
+    } catch (e) {
+      console.error(e);
+    }
+  };
   
   return (
     <div>
@@ -70,6 +83,25 @@ const Profile = (props) => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
+        <h1>Active Mentees</h1>
+          {user.role==="Mentor" ? 
+            <div className="col-12 mb-3">
+            {user.mentees && (user.mentees).map(user => (
+                <button className="btn w-100 display-block mb-2" key={user._id}>
+                  <Link to={`/profile/${user.username}`}>{user.username}</Link>
+                </button>
+              ))}
+            </div>
+             : ''      
+
+        
+          }
+          {user.role==="Mentor" && 
+          <button className="btn ml-auto" onClick={handleClick}>
+              Add Mentor
+          </button>
+          }
+          
           {/* <FriendList
             username={user.username}
             friendCount={user.friendCount}
