@@ -1,7 +1,7 @@
-import React, { useState, Container, List, card } from 'react';
-import { Navigate, useParams, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
+import { QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
 import WisdomForm from '../components/WisdomForm';
 import Auth from '../utils/auth';
@@ -13,10 +13,10 @@ const Test = (props) => {
   const { loading, data } = useQuery(QUERY_USERS);
   // const user = data?.me || data?.user || {};
 
-  const [topic, setTopic] = useState('all');
-  const handleTopicChange = (event) => {
-    setTopic(event.target.value);
-  }
+  // const [topic, setTopic] = useState('all');
+  // const handleTopicChange = (event) => {
+  //   setTopic(event.target.value);
+  // }
 
  
   
@@ -132,6 +132,9 @@ const Test = (props) => {
         </div>
         <div>
           <WisdomForm></WisdomForm>
+        </div>
+        <div>
+          <WisdomList />
         </div>
       </main>
     </>

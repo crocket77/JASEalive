@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
 import { ADD_MENTOR } from '../utils/mutations';
 
 
 const Profile = (props) => {
-  const loggedIn = Auth.loggedIn();
+  // const loggedIn = Auth.loggedIn();
 
   const { username } = useParams();
   const [addMentor] = useMutation(ADD_MENTOR);
