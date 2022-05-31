@@ -25,29 +25,29 @@ const WisdomForm = () => {
           [name]: value,
         });
       };
-      const [addWisdom, { error }] = useMutation(ADD_WISDOM)
+      
       // this isnt working
-      // const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
-      //   update(cache, { data: { addWisdom } }) {
-      //       // could potentially not exist yet, so wrap in a try/catch
-      //     try {
-      //       // update me array's cache
-      //       const { me } = cache.readQuery({ query: QUERY_ME });
-      //       cache.writeQuery({
-      //         query: QUERY_ME,
-      //         data: { me: { ...me, wisdom: [...me.wisdom, addWisdom] } },
-      //       });
-      //     } catch (e) {
-      //       console.log(e)
-      //     }
-      //     // update wisdom array's cache
-      //     const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
-      //     cache.writeQuery({
-      //       query: QUERY_WISDOM,
-      //       data: { wisdom: [addWisdom, ...wisdom] },
-      //     });
-      //   }
-      // });
+      const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
+        update(cache, { data: { addWisdom } }) {
+            // could potentially not exist yet, so wrap in a try/catch
+          try {
+            // update me array's cache
+            const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+              query: QUERY_ME,
+              data: { me: { ...me, wisdom: [...me.wisdom, addWisdom] } },
+            });
+          } catch (e) {
+            console.log(e)
+          }
+          // update wisdom array's cache
+          const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
+          cache.writeQuery({
+            query: QUERY_WISDOM,
+            data: { wisdom: [addWisdom, ...wisdom] },
+          });
+        }
+      });
       
       const handleFormSubmit = async event => {
         event.preventDefault();
