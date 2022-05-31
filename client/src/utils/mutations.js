@@ -35,11 +35,12 @@ export const ADD_ABOUT = gql`
 `;
 
 export const ADD_WISDOM = gql`
-  mutation addWisdom($wisdomText: String!) {
+  mutation addWisdom($wisdomText: String!, ) {
     addWisdom(wisdomText: $wisdomText) {
       _id
       wisdomText
       username
+      topic
       
     }
   }

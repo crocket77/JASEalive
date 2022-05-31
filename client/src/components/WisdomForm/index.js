@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_WISDOM } from '../../utils/mutations';
-import { QUERY_ME, QUERY_WISDOM } from '../../utils/queries';
+import { QUERY_ME, QUERY_WISDOM, QUERY_WISDOMS } from '../../utils/queries';
 
 
 const WisdomForm = () => {
@@ -25,30 +25,34 @@ const WisdomForm = () => {
           [name]: value,
         });
       };
-      const [addWisdom, { error }] = useMutation(ADD_WISDOM)
+      //const [addWisdom, { error }] = useMutation(ADD_WISDOM)
       // this isnt working
-      // const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
-      //   update(cache, { data: { addWisdom } }) {
-      //       // could potentially not exist yet, so wrap in a try/catch
-      //     try {
-      //       // update me array's cache
-      //       const { me } = cache.readQuery({ query: QUERY_ME });
-      //       console.log(me)
-      //       cache.writeQuery({
-      //         query: QUERY_ME,
-      //         data: { me: { ...me, wisdom: [...me.wisdom, addWisdom] } },
-      //       });
-      //     } catch (e) {
-      //       console.log(e)
-      //     }
-      //     // update wisdom array's cache
-      //     const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
-      //     cache.writeQuery({
-      //       query: QUERY_WISDOM,
-      //       data: { wisdom: [addWisdom, ...wisdom] },
-      //     });
-      //   }
-      // });
+      const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
+        update(cache, { data: { addWisdom } }) {
+            // could potentially not exist yet, so wrap in a try/catch
+          try {
+            // update me array's cache
+            const { me } = cache.readQuery({ query: QUERY_ME });
+            console.log(me)
+            cache.writeQuery({
+              query: QUERY_ME,
+              data: { me: { ...me, wisdoms: [...me.wisdoms, addWisdom] } },
+            });
+          } catch (e) {
+            
+            console.log(e)
+          }
+          // update wisdom array's cache
+          console.log("this is it")
+          //saying wisdoms is undefined
+          const { wisdoms } = cache.readQuery({ query: QUERY_WISDOMS });
+          console.log("this is not it")
+          cache.writeQuery({
+            query: QUERY_WISDOMS,
+            data: { wisdoms: [addWisdom, ...wisdoms] },
+          });
+        }
+      });
       
 
       const handleFormSubmit = async event => {
