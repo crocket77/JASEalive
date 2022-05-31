@@ -13,7 +13,7 @@ import WisdomList from '../components/WisdomList';
 const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
   const { username } = useParams();
-  console.log("username ", username)
+  
   const [addMentor] = useMutation(ADD_MENTOR);
   
 
@@ -26,21 +26,27 @@ const Profile = (props) => {
   const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
     variables: { username: username },
   });
-  
+
+  const { loading:wisdomLoading, data:wisdoms } = useQuery(QUERY_WISDOMS);
+  // console.log("query wisdoms ", data)
+
 
 
 
   const user = data?.me || data?.user || {};
-  console.log(user.mentors)
+  console.log("username ", user.username)
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/profile" />;
   } 
   
 
-  if (loading) {
+  if (loading||wisdomLoading) {
     return <div>Loading...</div>;
   }
+
+  const wisdomsArr=wisdoms.wisdoms
+  console.log(wisdomsArr)
 
   if (!user?.username) {
     return (
@@ -113,11 +119,11 @@ const Profile = (props) => {
             {loading ? (
               <div>Loading...</div>
             ) : (
-              {/* <WisdomList
-                wisdoms={wisdoms}
+              <WisdomList
+                wisdoms={wisdomsArr}
                 username={user.username}
-                
-              /> */}
+                topic="everything"
+              />
             )}
           </div>
           </>  
@@ -134,14 +140,6 @@ const Profile = (props) => {
 
 
       </div>
-
-      <div className="flex-row justify-space-between mb-3">
-        <div className="col-12 mb-3 col-lg-8">
-          {/* <ThoughtList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
-          /> */}
-        </div>
 
         <div className="col-12 col-lg-3 mb-3">
 
@@ -161,15 +159,8 @@ const Profile = (props) => {
               ))}
             </div>     
           }
-
-          {/* <FriendList
-            username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
-          /> */}
         </div>
-      </div>
-      {/* <div className="mb-3">{!userParam && <ThoughtForm />}</div> */}
+      
       
     </div>
     

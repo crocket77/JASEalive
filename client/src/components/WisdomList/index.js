@@ -3,12 +3,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const WisdomList = ({wisdoms, interest, username}) => {
-
+  var wisdomArr=[]
   if (!wisdoms.length) {
     return <h3>No Wisdoms Yet</h3>;
   }
+  console.log(username)
+  if(username){
+    wisdomArr=wisdoms.filter(wisdom=>wisdom.username===username)
+    console.log(wisdomArr)
+  }
 
-  var wisdomArr=[]
+  
   // const codingArr=[]
   // const musicArr=[]
   // const fitnessArr=[]
