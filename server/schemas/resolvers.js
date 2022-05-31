@@ -10,6 +10,7 @@ const resolvers = {
             const userData = await User.findOne(context.user)
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees');
 
           return userData;
@@ -20,6 +21,7 @@ const resolvers = {
           return User.findOne({ username })
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees');
         },
         // get all users
@@ -27,6 +29,7 @@ const resolvers = {
           return User.find()
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees')
             // .populate('interests');
         },
@@ -82,7 +85,7 @@ const resolvers = {
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
         addWisdom: async(parent, args, context) => {
-          console.log("this is what im defining", context.user)
+          console.log("this is what im defining", args)
           if(context.user){
 
             const newWisdom=await Wisdom.create({...args, username: context.user.username})
