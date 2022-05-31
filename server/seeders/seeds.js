@@ -12,6 +12,7 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
     await Categories.create(catSeeds);
+    // should there be await Wisdom.create(wisdomSeeds) here?
 
     for (let i = 0; i < wisdomSeeds.length; i++) {
       const { _id, wisdomAuthor } = await Wisdom.create(wisdomSeeds[i]);

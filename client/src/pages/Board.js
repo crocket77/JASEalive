@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME, QUERY_MENTOR, QUERY_USERS } from '../utils/queries';
+import { QUERY_WISDOMS, QUERY_ME, QUERY_MENTOR, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
 import WisdomList from '../components/WisdomList';
 import Auth from '../utils/auth';
 
 const Board = (props) => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(QUERY_USERS);
+  const { loading, data } = useQuery(QUERY_USERS, QUERY_WISDOMS);
   // const { loading, data } = useQuery(userParam ? QUERY_USERS : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
   //   variables: { username: userParam },
   // });
   // const user = data?.me || data?.user || data?.mentor || {};  // ADDED data?.mentor HERE
 
-  const [topic, setTopic] = useState('all');
+  const [topic, setTopic] = useState("everything");
   const handleTopicChange = (event) => {
     setTopic(event.target.value);
   }
@@ -59,24 +59,24 @@ const Board = (props) => {
             <div className="dropdown-menu" id="dropdown-menu2" role="menu">
               <div className="dropdown-content">
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-link is-light is-responsive is-fullwidth">Coding</button>
+                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Coding</button>
                 </div>
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-link is-light is-responsive is-fullwidth">Fitness</button>
+                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Fitness</button>
                 </div>
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-link is-light is-responsive is-fullwidth">Music</button>
+                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Music</button>
                 </div>
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-link is-light is-responsive is-fullwidth">Finance</button>
+                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Finance</button>
                 </div>
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-link is-light is-responsive is-fullwidth">Parenting</button>
+                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Parenting</button>
                   
                 </div>
                 <hr className="dropdown-divider"></hr>
                 <div className="dropdown-item">
-                  <button class="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
+                  <button className="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
                 </div>
               </div>
             </div>

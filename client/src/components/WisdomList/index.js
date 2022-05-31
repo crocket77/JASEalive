@@ -8,11 +8,11 @@ const WisdomList = ({wisdoms, interest, username}) => {
   //   return <h3>No Wisdoms Yet</h3>;
   // }
 
-  const codingArr=[]
-  const musicArr=[]
-  const fitnessArr=[]
-  const financeArr=[]
-  const parentingArr=[]
+  let codingArr=[]
+  let musicArr=[]
+  let fitnessArr=[]
+  let financeArr=[]
+  let parentingArr=[]
   
   // conditionals that give the correct wisdom.
   var codingWisdom = false
@@ -46,7 +46,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
   }
 
   return (
-    <div>
+    <div className="tile is-parent">
       {/* <h3>{title}</h3> */}
       {everythingWisdom &&
       wisdoms.map(wisdom => (
