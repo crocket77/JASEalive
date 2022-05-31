@@ -7,12 +7,19 @@ import { QUERY_ME, QUERY_WISDOM, QUERY_WISDOMS } from '../../utils/queries';
 const WisdomForm = () => {
     var topic;
     const [wisdomText, setText] = useState('');
+    const [youTubeLink, setLink] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [formState, setFormState] = useState({ topic: 'everything'});
 
     const handleChange = event => {
         if (event.target.value.length <= 500) {
           setText(event.target.value);
+          setCharacterCount(event.target.value.length);
+        }
+      };
+      const handleChange3 = event => {
+        if (event.target.value.length <= 12) {
+          setLink(event.target.value);
           setCharacterCount(event.target.value.length);
         }
       };
@@ -57,13 +64,16 @@ const WisdomForm = () => {
 
       const handleFormSubmit = async event => {
         event.preventDefault();
+        
         try {
           // add wisdom to database
           await addWisdom({
-            variables: { wisdomText, topic }
+            variables: { wisdomText, youTubeLink, topic }
+            
           });
           // clear form value
           setText('');
+          setLink('');
           setCharacterCount(0);
         } catch (e) {
           console.error(e);
@@ -86,6 +96,12 @@ const WisdomForm = () => {
         value={wisdomText}
         className="form-input col-12 col-md-9"
         onChange={handleChange}
+        ></textarea>
+        <textarea
+        placeholder="Copy everything after the = from the url of the youTube video "
+        value={youTubeLink}
+        className="form-input col-12 col-md-9"
+        onChange={handleChange3}
         ></textarea>
         <select                
           className="form-input"
