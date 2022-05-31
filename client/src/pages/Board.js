@@ -43,7 +43,7 @@ const Board = (props) => {
   
   return (
     <div className="tile is-ancestor">
-      <div className="tile is-3 is-vertical is-parent">
+      <div className="is-3 is-vertical is-transparent is-parent">
         <div className= "tile is-child box">
             <h2 className="is-underlined">List Of Mentors</h2>
             <UserList usersarr={data.users} role="Mentor"></UserList>  

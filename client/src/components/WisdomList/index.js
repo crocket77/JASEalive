@@ -53,7 +53,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
   }
 
   return (
-    <div className="tile columns is-flex is-parent">
+    <div className="tile columns is-multiline is-flex is-parent">
       {/* <h3>{title}</h3> */}
       {everythingWisdom &&
         wisdomArr.map(wisdom => (
@@ -62,13 +62,13 @@ const WisdomList = ({wisdoms, interest, username}) => {
               <Link
                 to={`/profile/${wisdom.username}`}
                 style={{ fontWeight: 700 }}
-                className="text-light"
+                className="text-dark"
               >
                 {wisdom.username}
               </Link>{' '}
               {/* thought on {wisdom.createdAt} */}
             </p>
-            <div className="card-body">
+            <div className="column card-body">
               <p>{wisdom.wisdomText}</p>
             </div>
             <iframe width="280" height="158" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
