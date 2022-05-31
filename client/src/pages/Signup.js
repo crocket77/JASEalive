@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import './assets/Signup.css';
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', email: '', password: '', role: 'User', interest: 'everything'  });
   const [addUser, { error }] = useMutation(ADD_USER);
+
 
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     setFormState({
       ...formState,
       [name]: value,
@@ -33,10 +35,10 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <main id='container' className="flex-row justify-center mb-4">
       <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Sign Up</h4>
+        <div className="card card-media-margin-2rems">
+          <h4 className="card-header ">SIGN UP </h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
@@ -59,16 +61,46 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="password"
                 name="password"
                 type="password"
                 id="password"
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              <p className='has-text-centered'>Mentee or Mentor?</p>
+              <select                
+                className="form-input"
+                name="role"
+                type="role"
+                id="role"
+                value={formState.role}
+                onChange={handleChange}>
+                <option value="User">Mentee</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+              
+              <p className='has-text-centered'>What is your main interest?</p>
+              <select                
+                className="form-input"
+                name="interest"
+                type="interest"
+                id="interest"
+                value={formState.interest}
+                onChange={handleChange}>
+                <option value="coding">Coding</option>
+                <option value="music">Music</option>
+                <option value="fitness">Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="parenting">Parenting</option>
+                <option value="everything">Everything</option>
+              </select>
+              
+              <div className='px-auto'>
+              <button className="btn d-block w-100 h-10 button is-light button is-rounded" type="submit">
                 Submit
               </button>
+              </div>
             </form>
 
             {error && <div>Signup failed</div>}

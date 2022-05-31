@@ -13,10 +13,10 @@ export const QUERY_ABOUT = gql`
 
 export const QUERY_WISDOMS = gql`
   query wisdoms($username: String) {
-    wisdoms(username: $username) {
+    wisdomMentor(username: $username) {
       _id
       wisdomText
-      createdAt
+      youTubeLink
       username
     }
   }
@@ -26,11 +26,25 @@ export const QUERY_WISDOMS = gql`
 
 export const QUERY_WISDOM = gql`
   query wisdom($id: ID!) {
-    wisdom(_id: $id) {
+    wisdomSingle(_id: $id) {
       _id
       wisdomText
-      createdAt
+      youTubeLink
       username
+      topic
+    }
+  }
+`;
+
+export const QUERY_USERS = gql`
+  query users {
+    users{
+      _id
+      username
+      email
+      aboutText
+      role
+      interest
     }
   }
 `;
@@ -42,6 +56,16 @@ export const QUERY_USER = gql`
       username
       email
       aboutText
+      role
+      interest
+      mentors{
+        _id
+        username
+      }
+      mentees{
+        _id
+        username
+      }
     }
   }
 `;
@@ -53,6 +77,23 @@ export const QUERY_ME = gql`
       username
       email
       aboutText
+      role
+      interest
+      wisdoms{
+        _id
+        wisdomText
+        youTubeLink
+        username
+        topic
+      }
+      mentors{
+        _id
+        username
+      }
+      mentees{
+        _id
+        username
+      }
     }
   }
 `;

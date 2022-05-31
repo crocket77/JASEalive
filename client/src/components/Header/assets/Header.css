@@ -1,0 +1,20 @@
+nav{
+    background-image: linear-gradient(to right,rgba(116, 231, 237, 0.647) ,rgb(171, 207, 227));
+    color:rgb(37, 41, 43);
+    
+}
+#title {
+    color:rgb(37, 41, 43);
+    font-family:brush script MT;
+    letter-spacing: 2px
+}
+
+#navbarBasic {
+    background-image: linear-gradient(to right,rgba(140, 231, 235, 0.749) ,rgb(171, 207, 227) );
+  
+}
+
+.burger{
+    background-color: rgb(171, 207, 227);
+}
+

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ABOUT } from '../../utils/mutations';
-import { QUERY_ME,QUERY_ABOUT } from '../../utils/queries';
+import { QUERY_ME, QUERY_ABOUT } from '../../utils/queries';
 
 const AboutForm = ({_id}) => {
     
@@ -44,12 +44,10 @@ const AboutForm = ({_id}) => {
       const handleFormSubmit = async event => {
         event.preventDefault();
         try {
-          console.log(_id)
           // add about to database
           await addAbout({
             variables: { _id, aboutText }
           });
-          console.log("anything")
           // clear form value
           setText('');
           setCharacterCount(0);
@@ -59,7 +57,7 @@ const AboutForm = ({_id}) => {
       }; 
   return (
 
-    <div>
+    <div className="p-3 textClass">
         <p className={`m-0 ${characterCount === 1000 || error ? 'text-error' : ''}`}>
         Character Count: {characterCount}/1000
         {error && <span className="ml-2">Something went wrong...</span>}
@@ -71,10 +69,11 @@ const AboutForm = ({_id}) => {
         <textarea
         placeholder="Tell us about yourself and what you know..."
         value={aboutText}
-        className="form-input col-12 col-md-9"
+        className="form-input col-12 col-md-9 is-flex w-100"
         onChange={handleChange}
         ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
+        <br></br>
+        <button className="btn col-12 col-md-3 w-100" type="submit">
           Submit
         </button>
       </form>

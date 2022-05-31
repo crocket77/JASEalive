@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+// const categoriesSchema = require('./Categories');
 
 const userSchema = new Schema({
     username: {
@@ -13,7 +14,7 @@ const userSchema = new Schema({
       unique: true,
       validate: {
           validator(isEmail){
-              return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(isEmail);
+              return /^([a-zA-Z0-9_\.-]+)@([\da-zA-Z\.-]+)\.([a-zA-Z\.]{2,6})$/.test(isEmail);
           },
           message:"That email was not valid. Please enter a valid one"          
       }
@@ -23,25 +24,52 @@ const userSchema = new Schema({
       required: true,
       minlength: 5
     },
-    isMentor: {
-      type: Boolean
-    },
     aboutText: {
       type: String,
+    },  
+    role: {
+      type: String,
+      enum: ["User", "Mentor"],
+      default: "User",
+    },
+    interest: {
+      type: String,
+      enum: ["coding", "fitness","music","finance","gaming","parenting","everything"],
+      default: "everything",
+
+    },
+    category: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Categories'
+      }
+    ],
+    wisdoms:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Wisdom'
+      }
+    ],
+    mentors:[
+      {
+        type: Schema.Types.ObjectId,
+        ref:'User'
+      }
+    ],
+    mentees:[
+      {
+        type: Schema.Types.ObjectId,
+        ref:'User'
+      }
+    ],
+
+  },
+  {
+    toJSON: {
+      virtuals: true
     }
-    // mentors:[
-    //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Mentors'
-    //   }
-    // ],
-    // interests:[
-    //      //   {
-    //     type: Schema.Types.objectId,
-    //     ref:'Interests'
-    //   }
-    //]
-  });
+  }
+  );
 
   // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
@@ -57,6 +85,10 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('friendCount').get(function() {
+  return this.mentors.length;
+});
 
 const User = model('User', userSchema);
 

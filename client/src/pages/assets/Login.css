@@ -1,0 +1,26 @@
+
+.card{
+    width:600px;
+    height: 380px;
+    background-color:rgba(170, 172, 200, 0.626);
+    margin-top: 98px;
+   
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    word-spacing: 10px;
+    background-color: rgba(213, 216, 252, 0.5);
+    color: black;
+}
+
+
+
+@media screen and (max-width: 844px) {
+    .card {
+        width:auto;
+        height: auto;
+    }
+}
