@@ -92,7 +92,7 @@ const Profile = (props) => {
   if(username&&user.role==="User"){
     userProfile=true;
   }
-  
+  console.log(wisdoms)
   return (
     <div className= "">
       <div className=" mb-3 is-justify-content-center ">

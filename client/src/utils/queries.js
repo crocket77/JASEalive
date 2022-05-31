@@ -16,6 +16,7 @@ export const QUERY_WISDOMS = gql`
     wisdoms(username: $username) {
       _id
       wisdomText
+      youTubeLink
       username
       topic
     }

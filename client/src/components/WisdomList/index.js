@@ -57,7 +57,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
     everythingWisdom=true;
     wisdomArr=wisdoms
   }
-
+console.log(wisdomArr)
     return (
     <div>
       {/* <h3>{title}</h3> */}
@@ -77,7 +77,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
             <div className="card-body">
                 <p>{wisdom.thoughtText}</p>
             </div>
-            {/* <iframe width="560" height="315" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+            <iframe width="280" height="158" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         ))}
 

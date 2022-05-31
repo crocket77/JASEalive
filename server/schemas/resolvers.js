@@ -84,7 +84,7 @@ const resolvers = {
           console.log("this is what im defining", args)
           if(context.user){
 
-            const newWisdom=await Wisdom.create({...args, username: context.user.username})
+            const newWisdom=await Wisdom.create({wisdomText: args.wisdomText, topic: args.topic, youTubeLink: args.youTubeLink, username: context.user.username})
           
 
             await User.findByIdAndUpdate(
