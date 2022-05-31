@@ -95,10 +95,10 @@ const Signup = () => {
               </select>
               
                
-               <div className='px-auto'>
-              <button className="btn d-block w-100 h-10 button is-light button is-rounded" type="submit">
-                Submit
-              </button>
+              <div className='px-auto'>
+                <button className="btn d-block w-100 h-10 button is-light button is-rounded" type="submit">
+                  Submit
+                </button>
               </div>
             </form>
 

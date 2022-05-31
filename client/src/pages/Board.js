@@ -3,6 +3,7 @@ import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME, QUERY_MENTOR, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
+import WisdomList from '../components/WisdomList';
 import Auth from '../utils/auth';
 
 const Board = (props) => {
@@ -18,7 +19,7 @@ const Board = (props) => {
     setTopic(event.target.value);
   }
 
-  // const { mentors } = useQuery(QUERY_MENTOR)
+  // const mentorArr=usersarr.filter(user=>user.role==="Mentor")
 
 
   // navigate to personal profile page if username is yours
@@ -79,7 +80,7 @@ const Board = (props) => {
                   <p>Nutrition</p>
                 </div>
                 <div className="dropdown-item">
-                  <p>Gaming</p>
+                  <p>Parenting</p>
                 </div>
                 <hr className="dropdown-divider"></hr>
                 <div className="dropdown-item">
@@ -92,15 +93,12 @@ const Board = (props) => {
             Here you can find Mentor videos surrounding a broad range of topics! 
           </p>
         </div>
-        <div id='box1'className='container is-fluid col-12 mb-3 ml-3 is-transparent  has-text-black-bis p-2 pl-9 pb-5'>
-          <div  className='pl-9'>
-            <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
-            <p className='w-100 has-text-black has-text-weight-medium'>
-              HERE IS WHERE THE VIDEOS WILL GO MUST FIGURE OUT HOW TO MAKE THIS CONTAINER NOT EXTEND THE LENGTH OF THE PAGE AND INSTEAD ADD
-              A SCROLL BAR SHOULD THE AMOUNT OF VIDEOS DISPLAYED EXCEEED THE NORMAL PAGE LIMIT.
-            </p>
-          </div> 
-        </div>
+      </div>
+      <div id='box1'className='container is-fluid col-12 mb-3 ml-3 is-transparent  has-text-black-bis p-2 pl-9 pb-5 is-parent'>
+        <div  className='pl-9'>
+          <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
+          <WisdomList wisdoms={data.wisdoms} interest="everything"></WisdomList>
+        </div> 
       </div>
     </div>
   );

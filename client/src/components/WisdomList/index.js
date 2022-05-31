@@ -51,7 +51,7 @@ const WisdomList = ({wisdoms, interest}) => {
       {/* <h3>{title}</h3> */}
       {everythingWisdom &&
         wisdoms.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -71,7 +71,7 @@ const WisdomList = ({wisdoms, interest}) => {
 
         {codingWisdom &&
         codingArr.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -91,7 +91,7 @@ const WisdomList = ({wisdoms, interest}) => {
 
         {musicWisdom &&
         musicArr.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -111,7 +111,7 @@ const WisdomList = ({wisdoms, interest}) => {
 
         {fitnessWisdom &&
         fitnessArr.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -131,7 +131,7 @@ const WisdomList = ({wisdoms, interest}) => {
 
         {financeWisdom &&
         financeArr.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -151,7 +151,7 @@ const WisdomList = ({wisdoms, interest}) => {
 
         {parentingWisdom &&
         parentingArr.map(wisdom => (
-          <div key={wisdom._id} className="card mb-3">
+          <div key={wisdom._id} className="card mb-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
