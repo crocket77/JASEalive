@@ -2,19 +2,21 @@ import React, { useEffect } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME,QUERY_WISDOMS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
 import { ADD_MENTOR } from '../utils/mutations';
 import WisdomForm from '../components/WisdomForm';
+import WisdomList from '../components/WisdomList';
 
 
 const Profile = (props) => {
-const loggedIn = Auth.loggedIn();
-
+  const loggedIn = Auth.loggedIn();
   const { username } = useParams();
+  console.log("username ", username)
   const [addMentor] = useMutation(ADD_MENTOR);
   
+
 
 
   useEffect(() => {
@@ -106,6 +108,17 @@ const loggedIn = Auth.loggedIn();
           <div className="col-12 mb-3">
           <h4>Add a Wisdom:</h4>
             <WisdomForm></WisdomForm>
+          </div>
+            <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              {/* <WisdomList
+                wisdoms={wisdoms}
+                username={user.username}
+                
+              /> */}
+            )}
           </div>
           </>  
         }

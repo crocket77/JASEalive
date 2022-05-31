@@ -24,9 +24,10 @@ const typeDefs = gql`
   type Wisdom {
     _id: ID
     wisdomText: String
-    youTubeLink: String
+    createdAt:String
     username: String
     topic: String
+    youTubeLink:String
   }
   type Auth {
     token:ID!

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Navigate, useParams, Link } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_WISDOMS, QUERY_ME, QUERY_MENTOR, QUERY_USERS } from '../utils/queries';
+import { QUERY_WISDOMS, QUERY_USERS } from '../utils/queries';
 import UserList from '../components/UserList';
 import WisdomList from '../components/WisdomList';
 import Auth from '../utils/auth';
@@ -88,7 +88,7 @@ const Board = (props) => {
         <div id='box1'className='tile is-fluid col-12 mb-3 ml-3 is-transparent has-text-black-bis p-2 pl-9 pb-5 is-child'>
           <div  className='pl-9'>
             <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
-            <WisdomList></WisdomList>
+            <WisdomList wisdoms={data.wisdoms}></WisdomList>
           </div> 
         </div>
       </div>

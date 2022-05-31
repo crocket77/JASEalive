@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../utils/queries';
+import { QUERY_USERS, QUERY_WISDOMS } from '../utils/queries';
 import UserList from '../components/UserList';
 import WisdomForm from '../components/WisdomForm';
 import Auth from '../utils/auth';
@@ -11,16 +11,16 @@ import WisdomList from '../components/WisdomList';
 const Test = (props) => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(QUERY_USERS);
-  // const user = data?.me || data?.user || {};
-
+  const { loading:wisdomLoading, data:wisdoms } = useQuery(QUERY_WISDOMS);
+  // console.log("query wisdoms ", data)
+  const user = data?.me || data?.user || {};
+  const wisdomsArr=wisdoms.wisdoms
+  console.log(wisdomsArr)
   // const [topic, setTopic] = useState('all');
   // const handleTopicChange = (event) => {
   //   setTopic(event.target.value);
   // }
 
- 
-  
-  console.log(data)
     // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile:username" />;
@@ -134,7 +134,10 @@ const Test = (props) => {
           <WisdomForm></WisdomForm>
         </div>
         <div>
-          <WisdomList></WisdomList>
+        <WisdomList
+              wisdoms={wisdomsArr}
+              interest="everything"   
+        />
         </div>
       </main>
     </>
