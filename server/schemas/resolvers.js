@@ -45,17 +45,13 @@ const resolvers = {
         categories: async () => {
           return Categories.find().select('-__v');
         },
-        wisdomSingle: async (parent, { _id }) => {
-          console.log({ _id });
+        wisdom: async (parent, { _id }) => {
           return Wisdom.findOne({ _id })
-          .select('-__v');
         },
-        wisdomMentor: async (parent, { username }) => {
-          const mentorWisdoms = await Wisdom.find({ username })
-          .select('-__v'); 
-        },
-        wisdoms: async () => {
-          return Wisdom.find().select('-__v');
+
+        wisdoms: async (parent, {username}) => {
+          const params= username ? {username}:{};
+          return Wisdom.find(params)
         }
       },
       Mutation:{
