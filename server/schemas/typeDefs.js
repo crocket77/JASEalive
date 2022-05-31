@@ -38,9 +38,8 @@ const typeDefs = gql`
     users: [User]
     mentors: [User]
     categories: [Categories]
-    wisdomSingle(_id: ID!): Wisdom
-    wisdomMentor(username: String!): [Wisdom]
-    wisdoms: [Wisdom]
+    wisdom(_id: ID!): Wisdom
+    wisdoms(username:String): [Wisdom]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
