@@ -31,6 +31,7 @@ export const QUERY_WISDOM = gql`
       wisdomText
       youTubeLink
       username
+      topic
     }
   }
 `;
@@ -78,6 +79,13 @@ export const QUERY_ME = gql`
       aboutText
       role
       interest
+      wisdoms{
+        _id
+        wisdomText
+        youTubeLink
+        username
+        topic
+      }
       mentors{
         _id
         username
