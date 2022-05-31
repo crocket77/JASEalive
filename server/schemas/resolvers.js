@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User,Wisdom } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -85,6 +85,7 @@ const resolvers = {
         },
         addWisdom: async(parent, args, context) => {
           // add username as context.user...
+          console.log(args)
           const newWisdom = await Wisdom.create(args);
           return newWisdom;
         },

@@ -6,6 +6,7 @@ import { QUERY_USER, QUERY_ME, QUERY_USERS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
 import { ADD_MENTOR } from '../utils/mutations';
+import WisdomForm from '../components/WisdomForm';
 
 
 const Profile = (props) => {
@@ -67,11 +68,16 @@ const Profile = (props) => {
     }
   };
   var userMentor=false;
+  var userMentee=false;
   var mentorProfile=false;
   var userProfile=false;
   if(!username && user.role==="Mentor"){
     userMentor=true;
   }
+  if(!username && user.role==="User"){
+    userMentee=true;
+  }
+
   if(username&&user.role==="Mentor"){
     mentorProfile=true;
   }
@@ -83,7 +89,7 @@ const Profile = (props) => {
     <div className= "">
       <div className=" mb-3 is-justify-content-center ">
         <h2 className="bg-secondary is-black-bis p-3 profileTitle mb-3 has-text-centered">
-          Viewing {username ? `${user.username}'s` : 'your'} profile.
+          Viewing {username ? `${user.username}'s` : 'your'} profile-{user.username}.
         </h2>
         
         <div className='textClass'>
@@ -91,11 +97,29 @@ const Profile = (props) => {
         <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
         </div>
         
-        {!username &&
+        {userMentor &&
+          <>
+          <h4>Update your about:</h4>
           <div className="col-12 mb-3">
             <AboutForm _id={user._id}/>
           </div>
+          <div className="col-12 mb-3">
+          <h4>Add a Wisdom:</h4>
+            <WisdomForm></WisdomForm>
+          </div>
+          </>  
         }
+
+        {userMentee &&
+          <>
+          <h4>Update your about:</h4>
+          <div className="col-12 mb-3">
+            <AboutForm _id={user._id}/>
+          </div>
+          </>  
+        }
+
+
       </div>
 
       <div className="flex-row justify-space-between mb-3">
