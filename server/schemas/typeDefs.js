@@ -46,7 +46,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!,role:String!,interest:String!): Auth
     addAbout(_id: ID!, aboutText: String!):User
-    addWisdom(wisdomText: String!, youTubeLink: String, username: String!,topic:String): Wisdom
+    addWisdom(wisdomText: String!): Wisdom
     addMentor(mentorId:ID!):User
     updateTopic(_id:ID!,topic:String!):User
   }

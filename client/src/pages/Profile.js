@@ -10,7 +10,7 @@ import WisdomForm from '../components/WisdomForm';
 
 
 const Profile = (props) => {
-  // const loggedIn = Auth.loggedIn();
+const loggedIn = Auth.loggedIn();
 
   const { username } = useParams();
   const [addMentor] = useMutation(ADD_MENTOR);
