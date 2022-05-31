@@ -14,8 +14,7 @@ const Test = (props) => {
   const { loading:wisdomLoading, data:wisdoms } = useQuery(QUERY_WISDOMS);
   // console.log("query wisdoms ", data)
   const user = data?.me || data?.user || {};
-  const wisdomsArr=wisdoms.wisdoms
-  console.log(wisdomsArr)
+
   // const [topic, setTopic] = useState('all');
   // const handleTopicChange = (event) => {
   //   setTopic(event.target.value);
@@ -26,10 +25,12 @@ const Test = (props) => {
     return <Navigate to="/profile:username" />;
   }
 
-  if (loading) {
+  if (loading||wisdomLoading) {
     return <div>Loading...</div>;
   }
 
+  const wisdomsArr=wisdoms.wisdoms
+  console.log(wisdomsArr)
 
   // if (!user?.username) {
   //   return (
