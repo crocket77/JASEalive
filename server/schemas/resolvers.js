@@ -12,8 +12,6 @@ const resolvers = {
             .populate('mentors')
             .populate('mentees');
 
-
-      
           return userData;
           }
           throw new AuthenticationError('Not logged in')
@@ -84,15 +82,15 @@ const resolvers = {
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
         addWisdom: async(parent, args, context) => {
-          console.log(context.user)
+          console.log("this is what im defining", context.user)
           if(context.user){
 
-            const newWisdom=await Thought.create({...args, username: context.user.username})
+            const newWisdom=await Wisdom.create({...args, username: context.user.username})
           
 
             await User.findByIdAndUpdate(
               { _id: context.user._id },
-              { $push: { wisdoms: wisdom._id } },
+              { $push: { wisdoms: newWisdom._id } },
               { new: true }
             );
           // add username as context.user...
