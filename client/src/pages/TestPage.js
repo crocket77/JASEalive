@@ -6,6 +6,7 @@ import UserList from '../components/UserList';
 import WisdomForm from '../components/WisdomForm';
 import Auth from '../utils/auth';
 import { BackgroundImage } from "react-image-and-background-image-fade";
+import WisdomList from '../components/WisdomList';
 
 const Test = (props) => {
   const { username: userParam } = useParams();
