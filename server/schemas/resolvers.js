@@ -53,7 +53,7 @@ const resolvers = {
           const mentorWisdoms = await Wisdom.find({ username })
           .select('-__v'); 
         },
-        wisdomAll: async () => {
+        wisdoms: async () => {
           return Wisdom.find().select('-__v');
         }
       },
