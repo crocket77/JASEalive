@@ -90,26 +90,7 @@ const Profile = (props) => {
         <div className='card-header-title has-text-black is-flex'>About:</div>
         <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
         </div>
-        {userMentor&&
-            <div className="col-12 my-3 p-3 textClass">
-              <h3>Mentor topics you want to cover:</h3>
-              <form className="ml-1">
-                <input type="checkbox" id="coding" name="coding" value="coding" />Coding
-                <br></br>
-                <input type="checkbox" id="coding" name="coding" value="guitar" />Guitar
-                <br></br>
-                <input type="checkbox" id="coding" name="coding" value="fitness" />Fitness
-                <br></br>
-                <input type="checkbox" id="coding" name="coding" value="parenting" />Parenting
-                <br></br>
-                <input type="checkbox" id="coding" name="coding" value="life" />Life
-                <br></br>
-                <button className="btn w-100 " onClick={handleUpdateClick}>
-                  update
-                </button>
-              </form>
-            </div>
-          }
+        
         {!username &&
           <div className="col-12 mb-3">
             <AboutForm _id={user._id}/>
