@@ -2,31 +2,43 @@
   {
     "wisdomText" : "Learn to code and stuff",
     "username" : "Joe",
-    "youTubeLink" : "k9WqpQp8VSU"
+    "youTubeLink" : "k9WqpQp8VSU",
+    "topic":"coding"
   },
   {
     "wisdomText" : "More coding knowledge",
     "username" : "Joe",
-    "youTubeLink" : "aF0Qx7BOfcs"
+    "youTubeLink" : "aF0Qx7BOfcs",
+    "topic":"coding"
   },
   {
     "wisdomText" : "Keep on coding",
     "username" : "Joe",
-    "youTubeLink" : "I-k-iTUMQAY"
+    "youTubeLink" : "I-k-iTUMQAY",
+    "topic":"coding"
   },
   {
     "wisdomText" : "Crazy times gaming",
     "username" : "Bob",
-    "youTubeLink" : "y5uQb4ZQhpc"
+    "youTubeLink" : "y5uQb4ZQhpc",
+    "topic":"gaming"
   },
   {
     "wisdomText" : "Play more KSP",
     "username" : "Bob",
-    "youTubeLink" : "NEQ0qKa4X2Y"
+    "youTubeLink" : "NEQ0qKa4X2Y",
+    "topic":"gaming"
   },
   {
     "wisdomText" : "I love ONI!",
     "username" : "Bob",
-    "youTubeLink" : "ZK735Ro3dzs"
+    "youTubeLink" : "ZK735Ro3dzs",
+    "topic":"fitness"
+  },
+  {
+    "wisdomText" : "This is the way you do your finances",
+    "username" : "Bob",
+    "youTubeLink" : "ZK735Ro3dzs",
+    "topic":"finance"
   }
 ]

@@ -16,9 +16,7 @@ const typeDefs = gql`
     mentorCount:Int
     mentors:[User]
     mentees:[User]
-    
-
-
+    wisdoms:[Wisdom]
   }
   type Categories {
     category: String
@@ -28,7 +26,7 @@ const typeDefs = gql`
     wisdomText: String
     youTubeLink: String
     username: String
-    topic: [Categories]
+    topic: String
   }
   type Auth {
     token:ID!
@@ -42,13 +40,13 @@ const typeDefs = gql`
     categories: [Categories]
     wisdomSingle(_id: ID!): Wisdom
     wisdomMentor(username: String!): [Wisdom]
-    wisdomAll: [Wisdom]
+    wisdoms: [Wisdom]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!,role:String!,interest:String!): Auth
     addAbout(_id: ID!, aboutText: String!):User
-    addWisdom(wisdomText: String!, youTubeLink: String, username: String!): Auth
+    addWisdom(wisdomText: String!, youTubeLink: String, username: String!,topic:String): Wisdom
     addMentor(mentorId:ID!):User
     updateTopic(_id:ID!,topic:String!):User
   }

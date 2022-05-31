@@ -7,10 +7,12 @@ import './assets/Signup.css';
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '', role: 'User', interest: 'everything'  });
   const [addUser, { error }] = useMutation(ADD_USER);
+
+
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     setFormState({
       ...formState,
       [name]: value,

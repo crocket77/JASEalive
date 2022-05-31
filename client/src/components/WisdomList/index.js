@@ -2,9 +2,8 @@ import { VariablesAreInputTypesRule } from 'graphql';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const WisdomList = ({wisdoms, interest}) => {
+const WisdomList = ({wisdoms, interest, username}) => {
   console.log(wisdoms);
-
   // if (!wisdoms.length) {
   //   return <h3>No Wisdoms Yet</h3>;
   // }

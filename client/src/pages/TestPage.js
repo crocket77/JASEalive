@@ -134,7 +134,7 @@ const Test = (props) => {
           <WisdomForm></WisdomForm>
         </div>
         <div>
-          <WisdomList></WisdomList>
+          {/* <WisdomList></WisdomList> */}
         </div>
       </main>
     </>
