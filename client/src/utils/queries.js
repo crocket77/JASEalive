@@ -13,11 +13,12 @@ export const QUERY_ABOUT = gql`
 
 export const QUERY_WISDOMS = gql`
   query wisdoms($username: String) {
-    wisdomMentor(username: $username) {
+    wisdoms(username: $username) {
       _id
       wisdomText
       youTubeLink
       username
+      topic
     }
   }
 `;
@@ -26,10 +27,9 @@ export const QUERY_WISDOMS = gql`
 
 export const QUERY_WISDOM = gql`
   query wisdom($id: ID!) {
-    wisdomSingle(_id: $id) {
+    wisdom(_id: $id) {
       _id
       wisdomText
-      youTubeLink
       username
       topic
     }
@@ -82,7 +82,6 @@ export const QUERY_ME = gql`
       wisdoms{
         _id
         wisdomText
-        youTubeLink
         username
         topic
       }
@@ -90,10 +89,7 @@ export const QUERY_ME = gql`
         _id
         username
       }
-      mentees{
-        _id
-        username
-      }
+
     }
   }
 `;

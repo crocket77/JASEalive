@@ -3,25 +3,29 @@ const { Schema, model } = require('mongoose');
 const wisdomSchema = new Schema({
   wisdomText: {
     type: String,
-    required: 'You need to leave a wisdom!'
+    required: 'You need to leave a wisdom!',
+    minlength: 1,
+    maxlength: 280
   },
-  youTubeLink: {
-    type: String
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: timestamp => dateFormat(timestamp)
   },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now
-  // },
   username: {
     type: String,
     required: true
   },
-  topic: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Categories'
-    }
-  ]
+  youTubeLink: {
+    type: String
+  },
+  topic:{
+    type: String,
+    enum: ["coding", "fitness","music","finance","gaming","parenting","everything"],
+    default: "everything",
+
+  }
+  
 },
 {
   toJSON: {

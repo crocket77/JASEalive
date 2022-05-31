@@ -10,10 +10,9 @@ const resolvers = {
             const userData = await User.findOne(context.user)
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees');
 
-
-      
           return userData;
           }
           throw new AuthenticationError('Not logged in')
@@ -22,6 +21,7 @@ const resolvers = {
           return User.findOne({ username })
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees');
         },
         // get all users
@@ -29,6 +29,7 @@ const resolvers = {
           return User.find()
             .select('-__v -password')
             .populate('mentors')
+            .populate('wisdoms')
             .populate('mentees')
             // .populate('interests');
         },
@@ -44,17 +45,13 @@ const resolvers = {
         categories: async () => {
           return Categories.find().select('-__v');
         },
-        wisdomSingle: async (parent, { _id }) => {
-          console.log({ _id });
+        wisdom: async (parent, { _id }) => {
           return Wisdom.findOne({ _id })
-          .select('-__v');
         },
-        wisdomMentor: async (parent, { username }) => {
-          const mentorWisdoms = await Wisdom.find({ username })
-          .select('-__v'); 
-        },
-        wisdoms: async () => {
-          return Wisdom.find().select('-__v');
+
+        wisdoms: async (parent, {username}) => {
+          const params= username ? {username}:{};
+          return Wisdom.find(params)
         }
       },
       Mutation:{
@@ -84,11 +81,23 @@ const resolvers = {
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
         addWisdom: async(parent, args, context) => {
+          console.log("this is what im defining", args)
+          if(context.user){
+
+            const newWisdom=await Wisdom.create({wisdomText: args.wisdomText, topic: args.topic, youTubeLink: args.youTubeLink, username: context.user.username})
+          
+
+            await User.findByIdAndUpdate(
+              { _id: context.user._id },
+              { $push: { wisdoms: newWisdom._id } },
+              { new: true }
+            );
           // add username as context.user...
-          console.log(args)
-          const newWisdom = await Wisdom.create(args);
+          
+          
           return newWisdom;
-        },
+        }
+      },
         login:async(parent, { email, password }) => {
           const user = await User.findOne({ email });
   

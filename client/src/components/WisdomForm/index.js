@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_WISDOM } from '../../utils/mutations';
-import { QUERY_ME, QUERY_WISDOM } from '../../utils/queries';
+import { QUERY_ME, QUERY_WISDOM, QUERY_WISDOMS } from '../../utils/queries';
 
 
 const WisdomForm = () => {
     var topic;
     const [wisdomText, setText] = useState('');
+    const [youTubeLink, setLink] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [formState, setFormState] = useState({ topic: 'everything'});
 
     const handleChange = event => {
         if (event.target.value.length <= 500) {
           setText(event.target.value);
+          setCharacterCount(event.target.value.length);
+        }
+      };
+      const handleChange3 = event => {
+        if (event.target.value.length <= 12) {
+          setLink(event.target.value);
           setCharacterCount(event.target.value.length);
         }
       };
@@ -25,7 +32,7 @@ const WisdomForm = () => {
           [name]: value,
         });
       };
-      
+      //const [addWisdom, { error }] = useMutation(ADD_WISDOM)
       // this isnt working
       const [addWisdom, { error }] = useMutation(ADD_WISDOM, {
         update(cache, { data: { addWisdom } }) {
@@ -33,31 +40,40 @@ const WisdomForm = () => {
           try {
             // update me array's cache
             const { me } = cache.readQuery({ query: QUERY_ME });
+            console.log(me)
             cache.writeQuery({
               query: QUERY_ME,
-              data: { me: { ...me, wisdom: [...me.wisdom, addWisdom] } },
+              data: { me: { ...me, wisdoms: [...me.wisdoms, addWisdom] } },
             });
           } catch (e) {
+            
             console.log(e)
           }
           // update wisdom array's cache
-          const { wisdom } = cache.readQuery({ query: QUERY_WISDOM });
+          console.log("this is it")
+          //saying wisdoms is undefined
+          const { wisdoms } = cache.readQuery({ query: QUERY_WISDOMS });
+          console.log("this is not it")
           cache.writeQuery({
-            query: QUERY_WISDOM,
-            data: { wisdom: [addWisdom, ...wisdom] },
+            query: QUERY_WISDOMS,
+            data: { wisdoms: [addWisdom, ...wisdoms] },
           });
         }
       });
       
+
       const handleFormSubmit = async event => {
         event.preventDefault();
+        
         try {
           // add wisdom to database
           await addWisdom({
-            variables: { wisdomText, topic }
+            variables: { wisdomText, youTubeLink, topic }
+            
           });
           // clear form value
           setText('');
+          setLink('');
           setCharacterCount(0);
         } catch (e) {
           console.error(e);
@@ -80,6 +96,12 @@ const WisdomForm = () => {
         value={wisdomText}
         className="form-input col-12 col-md-9"
         onChange={handleChange}
+        ></textarea>
+        <textarea
+        placeholder="Copy everything after the = from the url of the youTube video "
+        value={youTubeLink}
+        className="form-input col-12 col-md-9"
+        onChange={handleChange3}
         ></textarea>
         <select                
           className="form-input"

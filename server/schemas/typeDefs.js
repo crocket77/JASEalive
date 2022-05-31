@@ -24,9 +24,10 @@ const typeDefs = gql`
   type Wisdom {
     _id: ID
     wisdomText: String
-    youTubeLink: String
+    createdAt:String
     username: String
     topic: String
+    youTubeLink: String
   }
   type Auth {
     token:ID!
@@ -38,15 +39,14 @@ const typeDefs = gql`
     users: [User]
     mentors: [User]
     categories: [Categories]
-    wisdomSingle(_id: ID!): Wisdom
-    wisdomMentor(username: String!): [Wisdom]
-    wisdoms: [Wisdom]
+    wisdom(_id: ID!): Wisdom
+    wisdoms(username:String): [Wisdom]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!,role:String!,interest:String!): Auth
     addAbout(_id: ID!, aboutText: String!):User
-    addWisdom(wisdomText: String!, youTubeLink: String, username: String!,topic:String): Wisdom
+    addWisdom(wisdomText: String!, topic: String, youTubeLink: String): Wisdom
     addMentor(mentorId:ID!):User
     updateTopic(_id:ID!,topic:String!):User
   }
