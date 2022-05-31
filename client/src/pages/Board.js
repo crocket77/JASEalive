@@ -9,6 +9,7 @@ import Auth from '../utils/auth';
 const Board = (props) => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(QUERY_USERS, QUERY_WISDOMS);
+  const { loading:wisdomLoading, data:wisdoms } = useQuery(QUERY_WISDOMS);
   // const { loading, data } = useQuery(userParam ? QUERY_USERS : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
   //   variables: { username: userParam },
   // });
@@ -24,9 +25,12 @@ const Board = (props) => {
     return <Navigate to="/board" />;
   }
 
-  if (loading) {
+  if (loading||wisdomLoading) {
     return <div>Loading...</div>;
   }
+
+  const wisdomsArr=wisdoms.wisdoms
+  console.log(wisdomsArr)
 
   // if (!user?.username) {
   //   return (
@@ -88,7 +92,7 @@ const Board = (props) => {
         <div id='box1'className='tile is-fluid col-12 mb-3 ml-3 is-transparent has-text-black-bis p-2 pl-9 pb-5 is-child'>
           <div  className='pl-9'>
             <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
-            <WisdomList wisdoms={data.wisdoms}></WisdomList>
+            <WisdomList wisdoms={wisdomsArr} interest="everything"></WisdomList>
           </div> 
         </div>
       </div>
