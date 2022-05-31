@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'switchtodotenv';
+const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
 module.exports = {
@@ -19,8 +19,9 @@ module.exports = {
     if (!token) {
       return req;
     }
-
+    // this is not working correctly
     try {
+      
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch {

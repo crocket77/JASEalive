@@ -84,11 +84,23 @@ const resolvers = {
           return User.findOneAndUpdate({"_id": args._id},{"$set": {aboutText:args.aboutText}}, {new:true})
         },
         addWisdom: async(parent, args, context) => {
+          console.log(context.user)
+          if(context.user){
+
+            const newWisdom=await Thought.create({...args, username: context.user.username})
+          
+
+            await User.findByIdAndUpdate(
+              { _id: context.user._id },
+              { $push: { wisdoms: wisdom._id } },
+              { new: true }
+            );
           // add username as context.user...
-          console.log(args)
-          const newWisdom = await Wisdom.create(args);
+          
+          
           return newWisdom;
-        },
+        }
+      },
         login:async(parent, { email, password }) => {
           const user = await User.findOne({ email });
   
