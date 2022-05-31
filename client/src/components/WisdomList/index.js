@@ -55,7 +55,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
   return (
     <div className="tile columns is-multiline is-flex is-parent">
       {/* <h3>{title}</h3> */}
-      {everythingWisdom &&
+      {wisdomArr &&
         wisdomArr.map(wisdom => (
           <div key={wisdom._id} className="column mb-3 is-child box">
             <p className="card-header">
