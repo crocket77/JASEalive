@@ -62,7 +62,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
     <div>
       {/* <h3>{title}</h3> */}
       {wisdomArr &&
-        wisdoms.map(wisdom => (
+        wisdomArr.map(wisdom => (
           <div key={wisdom._id} className="card mb-3">
             <p className="card-header">
               <Link
