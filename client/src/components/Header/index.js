@@ -28,7 +28,7 @@ const Header = () => {
             </Link>
         </div>
         <div id="navBar2" className="navbar text-center navbar-end bg-secondary  ">
-          <a role="button" className="navbar-burger burger has-text-black-bis bg-secondary  burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic"
+          <a role="button" className=" navbar-burger burger has-text-black-bis bg-secondary burger navbar-dropdown " aria-label="menu" aria-expanded="false" data-target="navbarBasic"
               onClick={toggleBurgerMenu}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
