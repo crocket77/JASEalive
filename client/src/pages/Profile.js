@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME,QUERY_WISDOMS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
-import { ADD_MENTOR } from '../utils/mutations';
+import { ADD_MENTOR, DELETE_USER } from '../utils/mutations';
 import WisdomForm from '../components/WisdomForm';
 import WisdomList from '../components/WisdomList';
 import UserList from '../components/UserList';
@@ -15,7 +15,8 @@ const Profile = (props) => {
   const { username } = useParams();  
   const [addMentor] = useMutation(ADD_MENTOR);
   const [topic, setTopic] = useState("everything");
-  const [mentor,setMentor] = useState("")
+  const [mentor,setMentor] = useState("");
+  const [deleteUser] = useMutation(DELETE_USER);
 
   // useEffect(() => {
   //   console.log(`/profile/${ username }`);
@@ -90,7 +91,15 @@ const Profile = (props) => {
         console.error(e);
       }
     };
- 
+
+    const handleDeleteUser = async () => {
+      try {
+        await deleteUser({variables: { id: user._id}});
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
   ///
   console.log(wisdomsArr)
   return (
@@ -105,6 +114,11 @@ const Profile = (props) => {
         <h4>About:</h4>
         </div>
         <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
+        </div>
+        <div>
+          <button className="btn ml-auto" onClick={handleDeleteUser}>
+                  Delete Account
+          </button>
         </div>
         
         {/* if the user is a Mentor looking at their own profile */}

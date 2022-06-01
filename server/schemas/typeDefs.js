@@ -49,6 +49,7 @@ const typeDefs = gql`
     addWisdom(wisdomText: String!, topic: String, youTubeLink: String): Wisdom
     addMentor(mentorId:ID!):User
     updateTopic(_id:ID!,topic:String!):User
+    deleteUser(_id: ID!): User
   }
 `;
 

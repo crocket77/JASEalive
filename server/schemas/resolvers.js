@@ -113,6 +113,10 @@ const resolvers = {
   
           const token = signToken(user);
           return { token, user };      
+        },
+        deleteUser: async(parent, args, context) => {
+          const delUser = await User.findByIdAndDelete({ _id: context.user._id });
+          return delUser;
         }
       }
       
