@@ -154,26 +154,31 @@ const Profile = (props) => {
           
             <div className="col-12 mb-3 textClass p-3">
               <h4 className='is-justify-content-left'>Your Mentors:</h4>
-              {user.mentors && (user.mentors).map(mentor => (
+              {user.mentors ? (user.mentors).map(mentor => (
+                <>
                 <button className="btn w-100 display-block mb-2" key={mentor._id}>
                   <Link to={`/profile/${mentor.username}`}>{mentor.username}</Link>
-                  <button onClick={handleMentorSelect} value={mentor.username} className="button is-outlined is-link is-light is-responsive is-fullwidth">{mentor.username}</button>
                 </button>
-              ))}
+
+                </>
+              )):
+              <h5>Go find some mentors!</h5>}
             </div>  
 
       <div className='tile is-parent flex-row justify-space-around mb-3'>
         <div className='about col-12 mb-3 justify-space-around textClass'>
-            <h4 className='p-3  w-100'>Select a topic:</h4>
-          <div className="dropdown is-hoverable mb-3">
-                <div className="dropdown-trigger ">
-                  <button className="btn bg-secondary w-100 is-black-bis ml-3 " aria-haspopup="true" aria-controls="dropdown-menu2">
+            <h5 className='p-3  w-100'>Select a topic:</h5>
+          <div className="dropdown is-hoverable mb-3 justify-space-around ">
+                <div className="dropdown-trigger justify-space-around ">
+                  <button className="btn bg-secondary w-100 is-black-bis ml-6 " aria-haspopup="true" aria-controls="dropdown-menu2">
                     <span className=''>Topics!</span>
                     <span className="icon is-small">
                       <i className="fas fa-angle-down" aria-hidden="true"></i>
                     </span>
                   </button>
                 </div>
+
+                {/* topic dropdown */}
                 <div className="dropdown-menu" id="dropdown-menu2" role="menu">
                   <div className="dropdown-content">
                     <div className="dropdown-item">
@@ -199,10 +204,31 @@ const Profile = (props) => {
                       <button onClick={handleTopicChange} value="everything" className="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
                     </div>
                   </div>
+
                 </div>
           </div>
+          {/* displays mentors for wisdom filter */}
+          {user.mentors ? 
+          <div className="p-3">
+              <h5>Select If you want to see a specific mentors wisdom</h5>
+              {(user.mentors).map(mentor => (
+                <>
+                <button onClick={handleMentorSelect} value={mentor.username} className="button is-outlined is-link is-light is-responsive is-fullwidth mb-1">
+                  {mentor.username}
+                </button>
+                </>
+              ))}
+              </div>
+              :
+              <h4>Go find some mentors!</h4>
+              }
         </div>
-        <h4 className='textClass p-3 w-100 has-text-center is-capitalized'>{topic}</h4>
+        {/* describes the mentor and topic being seen */}
+        
+        {mentor &&
+        <h5 className='textClass p-3 w-100 has-text-center is-capitalized'>viewing {mentor}'s wisdom for {topic}</h5>
+        }
+        
         <WisdomList
               wisdoms={wisdomsArr}
               username={mentor}
