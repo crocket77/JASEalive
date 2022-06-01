@@ -3,14 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const WisdomList = ({wisdoms, interest, username}) => {
-  var wisdomArr=[]
-  // if (!wisdoms.length) {
-  //   return <h3>No Wisdoms Yet</h3>;
-  // }
-  console.log(username)
+  var wisdomArr=wisdoms
+
+  console.log(wisdoms)
   if(username){
     wisdomArr=wisdoms.filter(wisdom=>wisdom.username===username)
-    console.log(wisdomArr)
+    
   }
 
   
@@ -26,34 +24,37 @@ const WisdomList = ({wisdoms, interest, username}) => {
     codingWisdom=true;
     wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="coding")
   }
-  var musicWisdom = false
-  if(interest==="music"){
-    musicWisdom=true;
+  else if(interest==="music"){
     wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="music")
   }
-  var fitnessWisdom = false
-  if(interest==="fitness"){
-    fitnessWisdom=true;
+  else if(interest==="fitness"){
     wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="fitness")
   }
-  var financeWisdom = false
-  if(interest==="finance"){
-    financeWisdom=true;
+  else if(interest==="finance"){
+    
     wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="finance")
   }
-  var parentingWisdom = false
-  if(interest==="parenting"){
-    parentingWisdom=true;
+  else if(interest==="parenting"){
     wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="parenting")
   }
-  var everythingWisdom = false
-  if(interest==="everything"){
-    everythingWisdom=true;
+  else if(interest==="gaming"){
+    wisdomArr=wisdoms.filter(wisdom=>wisdom.topic==="gaming")
+  }
+  else{
     wisdomArr=wisdoms
   }
 
+  if(username){
+    wisdomArr=wisdomArr.filter(wisdom=>wisdom.username===username)
+
+  }
+
+  console.log(wisdomArr)
+  if (!wisdomArr.length) {
+    return <h3>No Wisdoms Yet</h3>;
+  }
   return (
-    <div className="tile columns is-multiline is-flex is-parent">
+    <div className="tile columns is-multiline is-flex is-parent justify-space-around">
       {/* <h3>{title}</h3> */}
       {wisdomArr &&
         wisdomArr.map(wisdom => (

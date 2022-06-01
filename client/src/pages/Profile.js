@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME,QUERY_WISDOMS } from '../utils/queries';
 import Auth from '../utils/auth';
 import AboutForm from '../components/AboutForm';
-import { ADD_MENTOR } from '../utils/mutations';
+import { ADD_MENTOR, DELETE_USER } from '../utils/mutations';
 import WisdomForm from '../components/WisdomForm';
 import WisdomList from '../components/WisdomList';
 import UserList from '../components/UserList';
@@ -14,6 +14,9 @@ const Profile = (props) => {
   const loggedIn = Auth.loggedIn();
   const { username } = useParams();  
   const [addMentor] = useMutation(ADD_MENTOR);
+  const [topic, setTopic] = useState("everything");
+  const [mentor,setMentor] = useState("");
+  const [deleteUser] = useMutation(DELETE_USER);
 
   // useEffect(() => {
   //   console.log(`/profile/${ username }`);
@@ -47,16 +50,7 @@ const Profile = (props) => {
     );
   }
 
-  //handle click logic
-  const handleClick = async () => {
-    console.log(user.username)
-    try {
-      await addMentor({variables: { id: user._id }});
-      console.log(user.interests)
-    } catch (e) {
-      console.error(e);
-    }
-  };
+
 
   //type of profile logic
   var userMentor=false;
@@ -77,10 +71,41 @@ const Profile = (props) => {
     userProfile=true;
   }
 
+    //topic select dropdown 
+    const handleTopicChange = (event) => {
+      setTopic(event.target.value);
+    }
+
+    //handle mentor select click logic
+    const handleMentorSelect = async (event) => {
+      setMentor(event.target.value)
+      console.log(mentor)
+    };
+  
+    //handle topic click logic
+    const handleAddMentor = async () => {
+      try {
+        await addMentor({variables: { id: user._id }});
+        console.log(user.interests)
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    const handleDeleteUser = async () => {
+      try {
+        await deleteUser({variables: { id: user._id}});
+        Auth.logout();
+        return <Navigate to="/"/>;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
   ///
-  console.log(user.mentors)
+  console.log(wisdomsArr)
   return (
-    <div className= "">
+    <main className= "justify-space-around">
       <div className=" mb-3 is-justify-content-center ">
         <h2 className="bg-secondary is-black-bis p-3 profileTitle mb-3 has-text-centered">
           Viewing {username ? `${user.username}'s` : 'your'} profile-{user.username}.
@@ -91,6 +116,11 @@ const Profile = (props) => {
         <h4>About:</h4>
         </div>
         <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
+        </div>
+        <div>
+          <button className="btn ml-auto" onClick={handleDeleteUser}>
+                  Delete Account
+          </button>
         </div>
         
         {/* if the user is a Mentor looking at their own profile */}
@@ -123,17 +153,94 @@ const Profile = (props) => {
             <AboutForm _id={user._id}/>
           </div>
 
-          <div className>
-            
-            <div className="col-12 mb-3">
+          
+            <div className="col-12 mb-3 textClass p-3">
               <h4 className='is-justify-content-left'>Your Mentors:</h4>
-              {user.mentors && (user.mentors).map(mentor => (
+              {user.mentors ? (user.mentors).map(mentor => (
+                <>
                 <button className="btn w-100 display-block mb-2" key={mentor._id}>
                   <Link to={`/profile/${mentor.username}`}>{mentor.username}</Link>
                 </button>
-              ))}
-            </div>    
+
+                </>
+              )):
+              <h5>Go find some mentors!</h5>}
+            </div>  
+
+      <div className='tile is-parent flex-row justify-space-around mb-3'>
+        <div className='about col-12 mb-3 justify-space-around textClass'>
+            <h5 className='p-3  w-100'>Select a topic:</h5>
+          <div className="dropdown is-hoverable mb-3 justify-space-around ">
+                <div className="dropdown-trigger justify-space-around ">
+                  <button className="btn bg-secondary w-100 is-black-bis ml-6 " aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <span className=''>Topics!</span>
+                    <span className="icon is-small">
+                      <i className="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+
+                {/* topic dropdown */}
+                <div className="dropdown-menu" id="dropdown-menu2" role="menu">
+                  <div className="dropdown-content">
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="coding" className="button is-outlined is-link is-light is-responsive is-fullwidth">Coding</button>
+                    </div>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="fitness" className="button is-outlined is-link is-light is-responsive is-fullwidth">Fitness</button>
+                    </div>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="music" className="button is-outlined is-link is-light is-responsive is-fullwidth">Music</button>
+                    </div>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="finance" className="button is-outlined is-link is-light is-responsive is-fullwidth">Finance</button>
+                    </div>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="gaming" className="button is-outlined is-link is-light is-responsive is-fullwidth">Gaming</button>
+                    </div>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="parenting" className="button is-outlined is-link is-light is-responsive is-fullwidth">Parenting</button>
+                    </div>
+                    <hr className="dropdown-divider"></hr>
+                    <div className="dropdown-item">
+                      <button onClick={handleTopicChange} value="everything" className="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
+                    </div>
+                  </div>
+
+                </div>
           </div>
+          {/* displays mentors for wisdom filter */}
+          {user.mentors ? 
+          <div className="p-3">
+              <h5>Select If you want to see a specific mentors wisdom</h5>
+              {(user.mentors).map(mentor => (
+                <>
+                <button onClick={handleMentorSelect} value={mentor.username} className="button is-outlined is-link is-light is-responsive is-fullwidth mb-1">
+                  {mentor.username}
+                </button>
+                </>
+              ))}
+              </div>
+              :
+              <h4>Go find some mentors!</h4>
+              }
+        </div>
+        {/* describes the mentor and topic being seen */}
+        
+        {mentor &&
+        <h5 className='textClass p-3 w-100 has-text-center is-capitalized'>viewing {mentor}'s wisdom for {topic}</h5>
+        }
+        
+        <WisdomList
+              wisdoms={wisdomsArr}
+              username={mentor}
+              interest={topic}   
+        ></WisdomList>
+      </div>
+      
+          
+                
+          
           </>  
         }
       </div>
@@ -141,8 +248,8 @@ const Profile = (props) => {
 
         {/* looking at a mentor profile */}
         {mentorProfile&& 
-          <div className="col-12 col-lg-3 mb-3">
-              <button className="btn ml-auto" onClick={handleClick}>
+          <div className="col-12 col-lg-3 mb-3 justify-space-around">
+              <button className="btn ml-auto" onClick={handleAddMentor}>
                   Add Mentor
               </button>
               <WisdomList
@@ -164,7 +271,7 @@ const Profile = (props) => {
                 ))}
             </div>     
           }
-      </div> 
+      </main> 
       
   );
 };
