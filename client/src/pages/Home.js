@@ -24,14 +24,13 @@ const Home = () => {
           </Link>
         </div>
 
-
         <p  id='disclaimer'className='about col-12 mb-3 ml-3 mx-auto has-text-centered is-size-6-mobile mgt-small'>
          
             
          Disclaimer:  Advice from mentors is to be taken at your own risk. 
             
         </p>
-
+       
 
       </div>
     </main>
