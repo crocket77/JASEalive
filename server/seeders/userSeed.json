@@ -20,6 +20,46 @@
         "mentees" : []
   },
   {
+    "username" : "Michaela", 
+        "email" : "grfdsaggfds@gfd.sgf", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Heather", 
+        "email" : "ytrehghbn@tre.gbfd", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "James", 
+        "email" : "fsdfdsgf@agre.sggf", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
+    "username" : "Sam", 
+        "email" : "tuujnnf@abvc.mjh", 
+        "password" : "test1234", 
+        "role" : "Mentor",
+        "wisdoms" : [],
+        "category" : [],
+        "mentors" : [],
+        "mentees" : []
+  },
+  {
     "username" : "Emma", 
         "email" : "qwerweqr@weqr.qwer", 
         "password" : "test1234", 

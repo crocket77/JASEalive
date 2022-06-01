@@ -114,6 +114,7 @@ const WisdomForm = () => {
           <option value="music">Music</option>
           <option value="fitness">Fitness</option>
           <option value="finance">Finance</option>
+          <option value="finance">Gaming</option>
           <option value="parenting">Parenting</option>
           <option value="everything">Everything</option>
         </select>

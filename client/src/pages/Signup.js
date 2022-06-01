@@ -90,6 +90,7 @@ const Signup = () => {
                 onChange={handleChange}>
                 <option value="coding">Coding</option>
                 <option value="music">Music</option>
+                <option value="gaming">Gaming</option>
                 <option value="fitness">Fitness</option>
                 <option value="finance">Finance</option>
                 <option value="parenting">Parenting</option>

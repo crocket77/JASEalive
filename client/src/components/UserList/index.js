@@ -20,7 +20,7 @@ const UserList = ({usersarr, role}) => {
   return (
     <div className="tile is-child box">
       {mentorList ? mentorArr.map(user => (
-        <button className="btn w-100 display-block mb-2" key={user._id}>
+        <button className="btn w-100 display-block mb-2 " key={user._id}>
           <Link to={`/profile/${user.username}`}>{user.username}</Link>
           <p>About: {user.aboutText}</p>
         </button>)):
