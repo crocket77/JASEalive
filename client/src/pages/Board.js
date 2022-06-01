@@ -8,29 +8,32 @@ import Auth from '../utils/auth';
 
 const Board = (props) => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(QUERY_USERS, QUERY_WISDOMS);
+  const { loading, data } = useQuery(QUERY_USERS);
   const { loading:wisdomLoading, data:wisdoms } = useQuery(QUERY_WISDOMS);
+
+  if (loading||wisdomLoading) {
+    return <div>Loading...</div>;
+  }
+
+  var wisdomsArr=wisdoms.wisdoms
+  console.log(wisdomsArr)
   // const { loading, data } = useQuery(userParam ? QUERY_USERS : QUERY_ME, QUERY_MENTOR, {  // ADDED QUERY_MENTOR HERE
   //   variables: { username: userParam },
   // });
   // const user = data?.me || data?.user || data?.mentor || {};  // ADDED data?.mentor HERE
 
   const [topic, setTopic] = useState("everything");
+
   const handleTopicChange = (event) => {
-    setTopic(event.target.value);
+    // setTopic(event.target.value);
+    // {wisdomsArr.filter(topic => wisdoms.topic)
+    wisdomsArr = wisdomsArr.filter(wisdom => wisdom.topic === topic)
   }
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/board" />;
   }
-
-  if (loading||wisdomLoading) {
-    return <div>Loading...</div>;
-  }
-
-  const wisdomsArr=wisdoms.wisdoms
-  console.log(wisdomsArr)
 
   // if (!user?.username) {
   //   return (
@@ -53,7 +56,7 @@ const Board = (props) => {
         <div className='about col-12 mb-3 ml-3'>
           <div className="dropdown is-hoverable">
             <div className="dropdown-trigger">
-              <button className="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button className="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Topics!</span>
                 <span className="icon is-small">
                   <i className="fas fa-angle-down" aria-hidden="true"></i>
@@ -63,24 +66,26 @@ const Board = (props) => {
             <div className="dropdown-menu" id="dropdown-menu2" role="menu">
               <div className="dropdown-content">
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Coding</button>
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Coding</button>
                 </div>
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Fitness</button>
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Fitness</button>
                 </div>
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Music</button>
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Music</button>
                 </div>
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Finance</button>
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Finance</button>
                 </div>
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-link is-light is-responsive is-fullwidth">Parenting</button>
-                  
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Ga</button>
+                </div>
+                <div className="dropdown-item">
+                  <button onClick={handleTopicChange} className="button is-outlined is-link is-light is-responsive is-fullwidth">Parenting</button>
                 </div>
                 <hr className="dropdown-divider"></hr>
                 <div className="dropdown-item">
-                  <button className="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
+                  <button onClick={handleTopicChange} className="button is-outlined is-primary is-light is-responsive is-fullwidth">Everything</button>
                 </div>
               </div>
             </div>
