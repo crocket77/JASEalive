@@ -1,44 +1,116 @@
 [
   {
-    "wisdomText" : "Learn to code and stuff",
-    "username" : "Joe",
-    "youTubeLink" : "k9WqpQp8VSU",
-    "topic":"coding"
-  },
-  {
-    "wisdomText" : "More coding knowledge",
-    "username" : "Joe",
-    "youTubeLink" : "aF0Qx7BOfcs",
-    "topic":"coding"
-  },
-  {
-    "wisdomText" : "Keep on coding",
-    "username" : "Joe",
+    "wisdomText" : "If you're interested in coding as a career/hobby, this is the best place for you to start!",
+    "username" : "Bob",
     "youTubeLink" : "I-k-iTUMQAY",
     "topic":"coding"
   },
   {
-    "wisdomText" : "Crazy times gaming",
-    "username" : "Bob",
-    "youTubeLink" : "y5uQb4ZQhpc",
+    "wisdomText" : "Everyone thinks coding is all about what languages you know, but this video teachs you how to THINK like a programmer!",
+    "username" : "Joe",
+    "youTubeLink" : "azcrPFhaY9k",
+    "topic":"coding"
+  },
+  {
+    "wisdomText" : "These games are very fun to play, but even more fun to code! Take a look!",
+    "username" : "Joe",
+    "youTubeLink" : "HM5d-NcXcwA",
+    "topic":"coding"
+  },
+  {
+    "wisdomText" : "First-person shooters are so much fun, but can be tough! Check out these aiming tips!",
+    "username" : "Michaela",
+    "youTubeLink" : "jPZXbW4wz_A",
     "topic":"gaming"
   },
   {
-    "wisdomText" : "Play more KSP",
-    "username" : "Bob",
-    "youTubeLink" : "NEQ0qKa4X2Y",
+    "wisdomText" : "Mouse & Keyboard vs. Controller. See which one fits you best!",
+    "username" : "James",
+    "youTubeLink" : "BlfEmEn9Jbc",
     "topic":"gaming"
   },
   {
-    "wisdomText" : "I love ONI!",
-    "username" : "Bob",
-    "youTubeLink" : "ZK735Ro3dzs",
+    "wisdomText" : "Here you'll find a really nice video on keeping in peak physical fitness! Reach out to me with any questions!",
+    "username" : "Heather",
+    "youTubeLink" : "gC_L9qAHVJ8",
     "topic":"fitness"
   },
   {
-    "wisdomText" : "This is the way you do your finances",
-    "username" : "Bob",
-    "youTubeLink" : "ZK735Ro3dzs",
+    "wisdomText" : "This is a short 7 minute workout that is guaranteed to have you feeling stronger in only a matter of weeks! Be sure to watch over your diet when using this workout!",
+    "username" : "Heather",
+    "youTubeLink" : "ECxYJcnvyMw",
+    "topic":"fitness"
+  },
+  {
+    "wisdomText" : "Working out too much can bea  really bad thing for you! be sure to takes rest days and have a cheat meal every so often!",
+    "username" : "Heather",
+    "youTubeLink" : "jfrlygii0Vw",
+    "topic":"fitness"
+  },
+  {
+    "wisdomText" : "Everyone knows that working out can be tough to make a habit of. Don't be discouraged, just follow your goals to the best of your abilities!",
+    "username" : "Sam",
+    "youTubeLink" : "Z63w5PefxTQ",
+    "topic":"fitness"
+  },
+  {
+    "wisdomText" : "If your goal is to gain as much mass as physically possible, then this is the video you need! Pay close attention to Arnold, he knows what he's talking about!",
+    "username" : "Sam",
+    "youTubeLink" : "o9zCgPtsups",
+    "topic":"fitness"
+  },
+  {
+    "wisdomText" : "Taxes can be super tough to do, so follow this video as a starter to tackling your taxes. You got this!",
+    "username" : "Michaela",
+    "youTubeLink" : "71vwVX67KNM",
     "topic":"finance"
+  },
+  {
+    "wisdomText" : "Ok honestly, nobody uses checks anymore. However, if you learn how, it could be a cool party trick or something!",
+    "username" : "Bob",
+    "youTubeLink" : "71vwVX67KNM",
+    "topic":"finance"
+  },
+  {
+    "wisdomText" : "As a first-time bank account owner, this video guides you on what bank statements are, and what to do with them!",
+    "username" : "James",
+    "youTubeLink" : "i_1NoQYHzPI",
+    "topic":"finance"
+  },
+  {
+    "wisdomText" : "Parenting is one of the greatest challenges we know, so watch this closely and you will do amazing!",
+    "username" : "Joe",
+    "youTubeLink" : "2HTNvQXuFhM",
+    "topic":"parenting"
+  },
+  {
+    "wisdomText" : "Before you set your mind on how you want to be a parent, try opening your mind to different perspectives every now and then!",
+    "username" : "Heather",
+    "youTubeLink" : "fyO8pvpnTdE",
+    "topic":"parenting"
+  },
+  {
+    "wisdomText" : "Sometimes people forget that they need to raise themselves before their kids, so take time to reflect on you and your health.",
+    "username" : "Sam",
+    "youTubeLink" : "QXqjmIIhIrY",
+    "topic":"parenting"
+  },
+  {
+    "wisdomText" : "Music can be much more complicated than you might think! Here we discuss music theory effectively!",
+    "username" : "James",
+    "youTubeLink" : "rgaTLrZGlk0",
+    "topic":"music"
+  },
+  {
+    "wisdomText" : "Music can be much more complicated than you might think! Here we discuss music theory effectively!",
+    "username" : "James",
+    "youTubeLink" : "rgaTLrZGlk0",
+    "topic":"music"
+  },
+  {
+    "wisdomText" : "Music is something humans cherish. It heals us. So don't take it for granted! Enjoy every song!",
+    "username" : "James",
+    "youTubeLink" : "eqIijgUmvX8",
+    "topic":"music"
   }
 ]

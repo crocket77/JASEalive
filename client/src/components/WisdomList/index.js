@@ -58,7 +58,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
       {/* <h3>{title}</h3> */}
       {wisdomArr &&
         wisdomArr.map(wisdom => (
-          <div key={wisdom._id} className="column m-3 is-child box">
+          <div key={wisdom._id} className="column has-text-centered mb-3 mr-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -69,7 +69,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
               </Link>{' '}
               {/* thought on {wisdom.createdAt} */}
             </p>
-            <div className="column card-body">
+            <div className="column has-text-centered card-body">
               <p>{wisdom.wisdomText}</p>
             </div>
             {wisdom.youTubeLink &&
