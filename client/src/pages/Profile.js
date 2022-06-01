@@ -125,7 +125,7 @@ const Profile = (props) => {
 
           <div className>
             
-            <div className="col-12 mb-3">
+            <div className="col-12 mb-3 textClass p-3">
               <h4 className='is-justify-content-left'>Your Mentors:</h4>
               {user.mentors && (user.mentors).map(mentor => (
                 <button className="btn w-100 display-block mb-2" key={mentor._id}>

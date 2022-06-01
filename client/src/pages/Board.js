@@ -50,11 +50,11 @@ const Board = (props) => {
         </div>
       </div>
       <div className='tile is-parent flex-row justify-space-around mb-3'>
-        <div className='about col-12 mb-3 justify-space-around '>
-          <h4 className='textClass p-3 mb-3 w-100'>Select a topic:</h4>
+        <div className='about col-12 mb-3 justify-space-around textClass'>
+          <h4 className='p-3  w-100'>Select a topic:</h4>
           <div className="dropdown is-hoverable mb-3">
             <div className="dropdown-trigger">
-              <button className="btn bg-secondary w-100 is-black-bis" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button className="btn bg-secondary w-100 is-black-bis ml-3" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Topics!</span>
                 <span className="icon is-small">
                   <i className="fas fa-angle-down" aria-hidden="true"></i>
@@ -88,13 +88,11 @@ const Board = (props) => {
               </div>
             </div>
           </div>
-          <p className='textClass p-3 w-100 mb-3'>
-            Here you can find Mentor videos surrounding a broad range of topics! 
-          </p>
+
         </div>
         <div id='box1'className='tile is-fluid col-12 mb-3 ml-3 is-transparent has-text-black-bis p-2 pl-9 pb-5 is-child'>
           <div  className='pl-9'>
-            <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Videos</h2>
+            <h2 className='title2 has-text-black has-text-weight-medium'>Mentor Wisdom:</h2>
             <WisdomList wisdoms={wisdomsArr} interest={topic}></WisdomList>
           </div> 
         </div>
