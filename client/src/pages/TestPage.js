@@ -7,6 +7,7 @@ import WisdomForm from '../components/WisdomForm';
 import Auth from '../utils/auth';
 import { BackgroundImage } from "react-image-and-background-image-fade";
 import WisdomList from '../components/WisdomList';
+import './assets/Test.css';
 
 const Test = (props) => {
   const { username: userParam } = useParams();
@@ -43,15 +44,23 @@ const Test = (props) => {
   
   return (
     <>
+    <div> 
+
+<BackgroundImage id="img"
+src="https://source.unsplash.com/random/800x600"
+width="800px"
+height="400px"
+isResponsive
+className="image"
+background-attachment="fixed"
+/>
+</div>
 
       <main>
-      <BackgroundImage
-      src="https://source.unsplash.com/random/800x600"
-      width="800px"
-      height="400px"
-      isResponsive
-      className="image"
-    />
+
+        
+  
+  <div id= "bottom" >
         <h1>Mentor Board</h1>
         <div className='flex-row justify-space-between'>
           <div className='about col-12 mb-3 ml-3'>
@@ -140,9 +149,12 @@ const Test = (props) => {
               interest="everything"   
         />
         </div>
+
+        </div>
       </main>
     </>
   );
 };
 
 export default Test;
+

@@ -83,5 +83,13 @@ mutation updateInterests($interestsArr:[interests]){
 }
 `
 
+export const DELETE_USER = gql`
+mutation deleteUser($id: ID!) {
+  deleteUser(_id: $id) {
+    _id
+  }
+}
+`
+
 
 

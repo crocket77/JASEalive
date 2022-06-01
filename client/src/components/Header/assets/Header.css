@@ -18,3 +18,14 @@ nav{
     background-color: rgb(171, 207, 227);
 }
 
+
+
+
+@media screen and (max-width: 844px) {
+       #title {
+           display: flex;
+         
+          
+        
+    }
+}

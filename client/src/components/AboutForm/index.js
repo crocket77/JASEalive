@@ -58,6 +58,7 @@ const AboutForm = ({_id}) => {
   return (
 
     <div className="p-3 textClass">
+        <h4>Update your about:</h4>
         <p className={`m-0 ${characterCount === 1000 || error ? 'text-error' : ''}`}>
         Character Count: {characterCount}/1000
         {error && <span className="ml-2">Something went wrong...</span>}
