@@ -117,11 +117,7 @@ const Profile = (props) => {
         </div>
         <section className='card-content mb-3'>{user.aboutText ? `${user.aboutText}` : 'No about listed.'}</section>
         </div>
-        <div>
-          <button className="btn ml-auto" onClick={handleDeleteUser}>
-                  Delete Account
-          </button>
-        </div>
+
         
         {/* if the user is a Mentor looking at their own profile */}
         {userMentor &&
@@ -271,6 +267,14 @@ const Profile = (props) => {
                 ))}
             </div>     
           }
+
+          <div>
+          
+          <h6 className='has-text-centered mt-6'>Would you like to leave Life Sherpa?</h6>
+          <button className="btn justify-space-around w-100 mb-3" onClick={handleDeleteUser}>
+                  Delete Account
+          </button>
+        </div>
       </main> 
       
   );
