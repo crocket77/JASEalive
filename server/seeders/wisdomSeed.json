@@ -42,6 +42,12 @@
     "topic":"fitness"
   },
   {
+    "wisdomText" : "Working out too much can bea  really bad thing for you! be sure to takes rest days and have a cheat meal every so often!",
+    "username" : "Heather",
+    "youTubeLink" : "jfrlygii0Vw",
+    "topic":"fitness"
+  },
+  {
     "wisdomText" : "Everyone knows that working out can be tough to make a habit of. Don't be discouraged, just follow your goals to the best of your abilities!",
     "username" : "Sam",
     "youTubeLink" : "Z63w5PefxTQ",
@@ -93,6 +99,18 @@
     "wisdomText" : "Music can be much more complicated than you might think! Here we discuss music theory effectively!",
     "username" : "James",
     "youTubeLink" : "rgaTLrZGlk0",
+    "topic":"music"
+  },
+  {
+    "wisdomText" : "Music can be much more complicated than you might think! Here we discuss music theory effectively!",
+    "username" : "James",
+    "youTubeLink" : "rgaTLrZGlk0",
+    "topic":"music"
+  },
+  {
+    "wisdomText" : "Music is something humans cherish. It heals us. So don't take it for granted! Enjoy every song!",
+    "username" : "James",
+    "youTubeLink" : "eqIijgUmvX8",
     "topic":"music"
   }
 ]
