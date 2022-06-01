@@ -57,7 +57,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
       {/* <h3>{title}</h3> */}
       {wisdomArr &&
         wisdomArr.map(wisdom => (
-          <div key={wisdom._id} className="column mb-3 is-child box">
+          <div key={wisdom._id} className="column m-3 is-child box">
             <p className="card-header">
               <Link
                 to={`/profile/${wisdom.username}`}
@@ -72,7 +72,7 @@ const WisdomList = ({wisdoms, interest, username}) => {
               <p>{wisdom.wisdomText}</p>
             </div>
             {wisdom.youTubeLink &&
-            <iframe width="280" height="158" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="300" height="158" src={`https://www.youtube.com/embed/${wisdom.youTubeLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             }
           </div>
         ))}

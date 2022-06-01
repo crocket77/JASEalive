@@ -42,18 +42,19 @@ const Board = (props) => {
   // }
   
   return (
-    <div className="tile is-ancestor">
-      <div className="is-3 is-vertical is-transparent is-parent">
-        <div className= "tile is-child box">
-            <h2 className="is-underlined">List Of Mentors</h2>
+    <div className="tile is-ancestor justify-space-around">
+      <div className="is-3 is-vertical is-transparent is-parent mb-3 justify-space-around mt-3">
+        <div className= "tile is-child textClass p-3 mt-3">
+            <h2 className="is-underlined has-text-black-bis">List Of Mentors</h2>
             <UserList usersarr={data.users} role="Mentor"></UserList>  
         </div>
       </div>
-      <div className='tile is-parent flex-row justify-space-between'>
-        <div className='about col-12 mb-3 ml-3'>
-          <div className="dropdown is-hoverable">
+      <div className='tile is-parent flex-row justify-space-around mb-3'>
+        <div className='about col-12 mb-3 justify-space-around '>
+          <h4 className='textClass p-3 mb-3 w-100'>Select a topic:</h4>
+          <div className="dropdown is-hoverable mb-3">
             <div className="dropdown-trigger">
-              <button className="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <button className="btn bg-secondary w-100 is-black-bis" aria-haspopup="true" aria-controls="dropdown-menu2">
                 <span>Topics!</span>
                 <span className="icon is-small">
                   <i className="fas fa-angle-down" aria-hidden="true"></i>
@@ -87,7 +88,7 @@ const Board = (props) => {
               </div>
             </div>
           </div>
-          <p className='w-100'>
+          <p className='textClass p-3 w-100 mb-3'>
             Here you can find Mentor videos surrounding a broad range of topics! 
           </p>
         </div>
