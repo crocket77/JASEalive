@@ -95,6 +95,8 @@ const Profile = (props) => {
     const handleDeleteUser = async () => {
       try {
         await deleteUser({variables: { id: user._id}});
+        Auth.logout();
+        return <Navigate to="/"/>;
       } catch (e) {
         console.error(e);
       }
