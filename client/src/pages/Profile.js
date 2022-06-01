@@ -116,15 +116,12 @@ const Profile = (props) => {
             <WisdomForm></WisdomForm>
           </div>
             <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <WisdomList
+               <WisdomList
                 wisdoms={wisdomsArr}
                 username={user.username}
                 topic="everything"
               />
-            )}
+
           </div>
           </>  
         }
