@@ -12,6 +12,7 @@ import Signup from './pages/Signup';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
 import Board from './pages/Board';
+import WisdomBoard from './pages/WisdomBoard';
 import TestPage from './pages/TestPage';
 
 
@@ -65,6 +66,10 @@ function App() {
             <Route 
                 path="/board/" 
                 element={<Board />} 
+            />
+            <Route 
+                path="/wisdomboard/" 
+                element={<WisdomBoard />} 
             />
             <Route 
                 path="/test/" 

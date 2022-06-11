@@ -5,6 +5,21 @@ import { Link } from 'react-router-dom';
 
 const DropdownList = ({usersarr, role}) => {
 
+<>
+              <select                
+                className="form-input"
+                name="interest"
+                type="interest"
+                id="interest"
+                onChange={handleChange}>
+                <option value="coding">Coding</option>
+                <option value="music">Music</option>
+                <option value="gaming">Gaming</option>
+                <option value="fitness">Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="parenting">Parenting</option>
+                <option value="everything">Everything</option>
+              </select>
 <div className='tile is-parent flex-row justify-space-around mb-3'>
       <div className='about col-12 mb-3 justify-space-around textClass'>
           <h4 className='p-3  w-100'>Select a topic:</h4>
@@ -48,6 +63,7 @@ const DropdownList = ({usersarr, role}) => {
         </div>
       </div>
     </div>
+    </>
       }
 
       export default TopicDropdown;
